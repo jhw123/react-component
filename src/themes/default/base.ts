@@ -1,0 +1,17 @@
+export const BaseColor = {
+  Gray000: '#ffffff',
+  Gray005: '#f2f2f2',
+  Gray010: '#e6e6e6',
+  Gray020: '#cccccc',
+  Gray030: '#b3b3b3',
+  Gray040: '#999999',
+  Gray050: '#808080',
+  Gray080: '#333333',
+  Gray100: '#000000',
+  LightBlue: '#ADD8E6',
+  RoyalBlue: '#4169E1',
+  Purple: '#9370DB',
+  Green: '#29cf98',
+  Orange: '#ECA869',
+  Red: '#ff4a4a',
+}

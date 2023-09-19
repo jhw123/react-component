@@ -11,7 +11,7 @@ export interface ViewOption<Ref extends HTMLOrSVGElement> {
   ref?: RefObject<Ref>
 }
 
-export function View<T, Ref extends HTMLOrSVGElement | never>(
+export function View<T, Ref extends HTMLOrSVGElement | never = never>(
   Component: FC<
     T & {
       style: Pick<ViewOption<Ref>, 'marginLeft' | 'marginRight' | 'marginTop' | 'marginBottom'>
@@ -20,7 +20,7 @@ export function View<T, Ref extends HTMLOrSVGElement | never>(
     }
   >
 ): FC<T & ViewOption<Ref>> {
-  return function (propsWithUIOptions: T & ViewOption<Ref>) {
+  return function view(propsWithUIOptions: T & ViewOption<Ref>) {
     const {
       margin,
       marginTop,
