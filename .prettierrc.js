@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   semi: false,
   trailingComma: 'es5',
   singleQuote: true,
@@ -6,3 +6,5 @@ module.exports = {
   tabWidth: 2,
   arrowParens: 'avoid',
 }
+
+module.exports = config
