@@ -1,8 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { View } from '@src/foundation/view'
-import { produce } from 'immer'
-import isEqual from 'lodash/isEqual'
 import React, { MouseEvent, TouchEvent, useCallback, useEffect } from 'react'
 import { useWindowSize } from 'react-use'
 
@@ -50,17 +48,15 @@ export const SplitView = View<Props>(({ children, initialSizes, direction = 'hor
       }
       if (container && draggedbarIndex >= 0) {
         event.preventDefault()
-        setSizes(sizes =>
-          produce(sizes, draft => {
-            const base = draft.slice(0, draggedbarIndex).reduce((s, n) => s + n, 0)
-            const diff =
-              direction === 'horizontal'
-                ? event.clientX - base - container.getBoundingClientRect().left - draft[draggedbarIndex]
-                : event.clientY - base - container.getBoundingClientRect().top - draft[draggedbarIndex]
-            draft[draggedbarIndex] += diff
-            draft[draggedbarIndex + 1] -= diff
-          })
-        )
+        const newSizes = [...sizes]
+        const base = newSizes.slice(0, draggedbarIndex).reduce((s, n) => s + n, 0)
+        const diff =
+          direction === 'horizontal'
+            ? event.clientX - base - container.getBoundingClientRect().left - newSizes[draggedbarIndex]
+            : event.clientY - base - container.getBoundingClientRect().top - newSizes[draggedbarIndex]
+        newSizes[draggedbarIndex] += diff
+        newSizes[draggedbarIndex + 1] -= diff
+        setSizes(newSizes)
       }
     },
     [direction, draggedbarIndex, height, width]
@@ -71,17 +67,15 @@ export const SplitView = View<Props>(({ children, initialSizes, direction = 'hor
       const container = containerRef.current
       if (container && draggedbarIndex >= 0) {
         event.preventDefault()
-        setSizes(sizes =>
-          produce(sizes, draft => {
-            const base = draft.slice(0, draggedbarIndex).reduce((s, n) => s + n, 0)
-            const diff =
-              direction === 'horizontal'
-                ? event.touches[0].clientX - base - container.getBoundingClientRect().left - draft[draggedbarIndex]
-                : event.touches[0].clientY - base - container.getBoundingClientRect().top - draft[draggedbarIndex]
-            draft[draggedbarIndex] += diff
-            draft[draggedbarIndex + 1] -= diff
-          })
-        )
+        const newSizes = [...sizes]
+        const base = newSizes.slice(0, draggedbarIndex).reduce((s, n) => s + n, 0)
+        const diff =
+          direction === 'horizontal'
+            ? event.touches[0].clientX - base - container.getBoundingClientRect().left - newSizes[draggedbarIndex]
+            : event.touches[0].clientY - base - container.getBoundingClientRect().top - newSizes[draggedbarIndex]
+        newSizes[draggedbarIndex] += diff
+        newSizes[draggedbarIndex + 1] -= diff
+        setSizes(newSizes)
       }
     },
     [direction, draggedbarIndex]
@@ -111,7 +105,7 @@ export const SplitView = View<Props>(({ children, initialSizes, direction = 'hor
   }, [childrenCnt, direction, prevInitialSizes])
 
   useEffect(() => {
-    if (!isEqual(initialSizes, prevInitialSizes)) {
+    if (initialSizes?.some((size, i) => prevInitialSizes?.[i] !== size)) {
       setPrevInitialSizes(initialSizes)
     }
   }, [initialSizes, prevInitialSizes])

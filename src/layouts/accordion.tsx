@@ -1,11 +1,10 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { TextButton } from '@src/components/buttons/text'
 import { Divider } from '@src/components/utils/divider'
 import { View } from '@src/foundation/view'
 import React, { useCallback, useState } from 'react'
 import { Collapsible } from './collapsible'
-import { css } from '@emotion/react'
-import { produce } from 'immer'
 
 interface Props {
   children: React.ReactNode
@@ -18,11 +17,9 @@ export const Accordion = View<Props>(({ children, titles, initialStates = [], ..
 
   const toggle = useCallback(
     (i: number) => () => {
-      setShow(show =>
-        produce(show, draft => {
-          draft[i] = !draft[i]
-        })
-      )
+      const newShow = [...show]
+      newShow[i] = !newShow[i]
+      setShow(newShow)
     },
     []
   )
