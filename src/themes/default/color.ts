@@ -17,20 +17,11 @@ export const Color = {
   Warning: css`
     color: ${BaseColor.Orange};
   `,
-  Placeholder: css`
-    color: ${BaseColor.Gray020};
-  `,
-  Highlight: css`
-    color: ${BaseColor.Gray000};
-  `,
   Focus: css`
     color: ${BaseColor.RoyalBlue};
   `,
   Action: css`
     color: ${BaseColor.Green};
-  `,
-  Inherit: css`
-    color: inherit;
   `,
 } as const
 
