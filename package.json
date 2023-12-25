@@ -1,9 +1,9 @@
 {
   "name": "@jhw123/react-component",
   "publishConfig": {
-    "@jhw123:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
-  "version": "0.0.8",
+  "version": "0.1.0",
   "author": "jhw123",
   "license": "MIT",
   "typings": "dist/index.d.ts",
@@ -16,7 +16,6 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "rollup": "rollup -c",
-    "publish-to-npm": "yarn rollup --bundleConfigAsCjs; npm publish --auth-type=legacy",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -31,7 +30,6 @@
     "@types/react": "^18.2.22",
     "@typescript-eslint/parser": "^6.7.2",
     "eslint": "^8.15.0",
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "^2.8.7",
     "react": "^18.2.0",
@@ -51,7 +49,7 @@
   "description": "This library aims to provide useful semantic colorsets, HOCs and components for easy layout building.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jhw123/react-component.git"
+    "url": "https://github.com/jhw123/react-component.git"
   },
   "keywords": [],
   "bugs": {
