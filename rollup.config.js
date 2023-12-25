@@ -1,32 +1,39 @@
-import resolve from '@rollup/plugin-node-resolve'
+import babel from '@rollup/plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
-import { dts } from 'rollup-plugin-dts'
-import { terser } from 'rollup-plugin-terser'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
-const packageJson = require('./package.json')
+const extensions = ['js', 'jsx', 'ts', 'tsx', 'mjs']
+
+const pkg = require('./package.json')
 
 export default [
   {
-    input: 'src/index.ts',
+    input: './src/index.ts',
+    external: [/node_modules/],
     output: [
       {
-        file: packageJson.main,
+        file: pkg.main,
         format: 'cjs',
         sourcemap: true,
       },
       {
-        file: packageJson.module,
-        format: 'esm',
-        sourcemap: true,
+        file: pkg.module,
+        format: 'es',
+        sourcemap: true
       },
     ],
-    plugins: [peerDepsExternal(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), terser()],
-  },
-  {
-    input: 'dist/esm/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [dts()],
+    plugins: [
+      nodeResolve({ extensions }),
+      babel({
+        exclude: './node_modules/**',
+        extensions,
+        include: ['./src/**/*'],
+      }),
+      commonjs({ include: './node_modules/**' }),
+      peerDepsExternal(),
+      typescript({ tsconfig: './tsconfig.json' }),
+    ],
   },
 ]
