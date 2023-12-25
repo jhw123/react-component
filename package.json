@@ -18,6 +18,7 @@
     "rollup": "rollup -c",
     "type-check": "tsc --noEmit"
   },
+  "type": "module",
   "dependencies": {
     "react-use": "^17.4.0",
     "@emotion/react": "^11.7.1",
