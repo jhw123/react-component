@@ -6,13 +6,12 @@ import React from 'react'
 import { ChangeEvent, useCallback } from 'react'
 
 interface Props {
-  children?: React.ReactNode
   options: Readonly<string[]>
   value?: string
   onSelect: (index: number, value: string) => void
 }
 
-export const SelectInput = View(({ options, children, onSelect, value, ...props }: Props) => {
+export const SelectInput = View(({ options, onSelect, value, ...props }: Props) => {
   const onClick = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
       const i = options.findIndex(op => op === e.target.value)
@@ -23,7 +22,6 @@ export const SelectInput = View(({ options, children, onSelect, value, ...props 
 
   return (
     <Container {...props}>
-      <Label>{children}</Label>
       <Options onChange={onClick} value={value}>
         {options.map((option, i) => (
           <option key={i}>{option}</option>
@@ -35,7 +33,10 @@ export const SelectInput = View(({ options, children, onSelect, value, ...props 
 })
 
 const Container = styled.div`
-  position: relative;
+  ${({ theme }) => css`
+    position: relative;
+    ${theme.fill.Secondary}
+  `}
 `
 
 const Options = styled.select`
@@ -65,11 +66,4 @@ const ArrowDown = styled.div`
   border-right: none;
   border-top: none;
   transform: rotate(-45deg);
-`
-
-const Label = styled.div`
-  ${({ theme }) => css`
-    ${theme.font.Body}
-    margin-bottom: 4px;
-  `}
 `

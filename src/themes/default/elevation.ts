@@ -7,15 +7,15 @@ export const Elevation = {
   `,
   L2: css`
     z-index: 20;
-    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
   `,
   L3: css`
     z-index: 30;
-    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3);
   `,
   L4: css`
     z-index: 40;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.4);
   `,
 } as const
 

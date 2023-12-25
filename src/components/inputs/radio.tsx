@@ -14,7 +14,7 @@ interface Props {
   onCheck?: (nextState: ComponentState) => void
 }
 
-export const RadioInput = View(({ state = 'Default', children, onCheck, fill = 'Action', ...props }: Props) => {
+export const RadioInput = View(({ state = 'Default', children, onCheck, fill = 'Focus', ...props }: Props) => {
   const id = useId()
 
   const onClick = useCallback(() => {
@@ -23,7 +23,7 @@ export const RadioInput = View(({ state = 'Default', children, onCheck, fill = '
 
   return (
     <Container {...props}>
-      <RadioCircle id={id} fill={state === 'Checked' ? fill : 'Sheet'} type="radio" onClick={onClick} />
+      <RadioCircle id={id} fill={state === 'Checked' ? fill : 'Primary'} type="radio" onClick={onClick} />
       <Label htmlFor={id}>{children}</Label>
       {state === 'Checked' && <Check />}
     </Container>
@@ -49,7 +49,7 @@ const RadioCircle = styled.input<{ fill: Fill }>`
     appearance: none;
     margin: 0 8px 0 0;
     cursor: pointer;
-    ${fill === 'Sheet' && theme.border.Secondary}
+    ${fill === 'Primary' && theme.border.Secondary}
     flex-shrink: 0;
   `}
 `
@@ -60,7 +60,7 @@ const Label = styled.label`
 
 const Check = styled.div`
   ${({ theme }) => css`
-    ${theme.fill.Sheet}
+    ${theme.fill.Primary}
     width: 12px;
     height: 12px;
     position: absolute;

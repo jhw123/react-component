@@ -82,6 +82,9 @@ export const ResetStyle = css`
   mark,
   audio,
   button,
+  input,
+  textarea,
+  select,
   video {
     margin: 0;
     padding: 0;
@@ -90,6 +93,7 @@ export const ResetStyle = css`
     font: inherit;
     vertical-align: baseline;
     color: inherit;
+    background: transparent;
   }
   /* HTML5 display-role reset for older browsers */
   article,

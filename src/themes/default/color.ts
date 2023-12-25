@@ -4,24 +4,39 @@ import { BaseColor } from './base'
 export const Color = {
   Primary: css`
     color: ${BaseColor.Gray080};
+    fill: ${BaseColor.Gray080};
+    @media (prefers-color-scheme: dark) {
+      color: ${BaseColor.Gray010};
+      fill: ${BaseColor.Gray010};
+    }
   `,
   Secondary: css`
     color: ${BaseColor.Gray050};
+    fill: ${BaseColor.Gray050};
+    @media (prefers-color-scheme: dark) {
+      color: ${BaseColor.Gray030};
+      fill: ${BaseColor.Gray030};
+    }
   `,
   Success: css`
     color: ${BaseColor.Green};
+    fill: ${BaseColor.Green};
   `,
   Danger: css`
     color: ${BaseColor.Red};
+    fill: ${BaseColor.Red};
   `,
-  Warning: css`
-    color: ${BaseColor.Orange};
+  Inactive: css`
+    color: ${BaseColor.Gray020};
+    fill: ${BaseColor.Gray020};
   `,
   Focus: css`
-    color: ${BaseColor.RoyalBlue};
-  `,
-  Action: css`
-    color: ${BaseColor.Green};
+    color: ${BaseColor.Blue040};
+    fill: ${BaseColor.Blue040};
+    @media (prefers-color-scheme: dark) {
+      color: ${BaseColor.Blue020};
+      fill: ${BaseColor.Blue020};
+    }
   `,
 } as const
 

@@ -2,41 +2,35 @@ import { css } from '@emotion/react'
 import { BaseColor } from './base'
 
 export const Fill = {
-  Base: css`
-    background-color: ${BaseColor.Gray005};
+  Primary: css`
+    background-color: ${BaseColor.Gray000};
+    @media (prefers-color-scheme: dark) {
+      background-color: ${BaseColor.Gray080};
+    }
   `,
-  Action: css`
-    background-color: ${BaseColor.Green};
+  Secondary: css`
+    background-color: ${BaseColor.Gray000};
+    @media (prefers-color-scheme: dark) {
+      background-color: ${BaseColor.Gray070};
+    }
   `,
   Success: css`
     background-color: ${BaseColor.Green};
   `,
-  Sheet: css`
-    background-color: ${BaseColor.Gray000};
-  `,
-  Info: css`
-    background-color: ${BaseColor.Gray010};
-  `,
-  Help: css`
-    background-color: ${BaseColor.LightBlue};
-  `,
   Danger: css`
     background-color: ${BaseColor.Red};
   `,
-  Disabled: css`
-    background-color: ${BaseColor.Gray030};
+  Inactive: css`
+    background-color: ${BaseColor.Gray005};
+    @media (prefers-color-scheme: dark) {
+      background-color: ${BaseColor.Gray070};
+    }
   `,
   Focus: css`
-    background-color: ${BaseColor.RoyalBlue};
-  `,
-  Transparent: css`
-    background-color: transparent;
-  `,
-  Primary: css`
-    background-color: ${BaseColor.Gray080};
-  `,
-  Secondary: css`
-    background-color: ${BaseColor.Gray030};
+    background-color: ${BaseColor.Blue020};
+    @media (prefers-color-scheme: dark) {
+      background-color: ${BaseColor.Blue030};
+    }
   `,
 }
 

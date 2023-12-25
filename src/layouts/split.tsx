@@ -161,14 +161,14 @@ const Bar = styled.div<{ isOnDrag: boolean; direction: Direction }>`
   ${({ isOnDrag, direction, theme }) => css`
     width: ${direction === 'horizontal' ? BAR_WIDTH + 'px' : '100%'};
     height: ${direction === 'horizontal' ? '100%' : BAR_WIDTH + 'px'};
-    ${isOnDrag ? theme.fill.Focus : theme.fill.Base}
+    ${isOnDrag ? theme.fill.Focus : theme.fill.Primary}
     cursor: ${direction === 'horizontal' ? 'col-resize' : 'row-resize'};
-    ${isOnDrag ? theme.color.Highlight : theme.color.Secondary}
+    ${isOnDrag ? theme.color.Focus : theme.color.Secondary}
     position: relative;
 
     &:hover {
       ${theme.fill.Focus}
-      ${theme.color.Highlight}
+      ${theme.color.Focus}
     }
 
     &::after {

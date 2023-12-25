@@ -22,10 +22,10 @@ export const FillButton = View<Props>(({ children, fill, onClick, state = 'Defau
 })
 
 const Container = styled.button<{ fill: Fill }>`
-  ${({ theme, fill }) => css`
-    ${theme.color.Highlight}
+  ${({ fill, theme }) => css`
     ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
+    color: white;
     ${theme.fill[fill]}
     border-radius: 8px;
     cursor: pointer;
@@ -41,7 +41,7 @@ const Container = styled.button<{ fill: Fill }>`
     }
 
     &:disabled {
-      ${theme.fill.Disabled}
+      ${theme.fill.Inactive}
       cursor: not-allowed;
     }
   `}

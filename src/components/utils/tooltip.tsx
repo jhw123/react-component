@@ -39,7 +39,7 @@ const Container = styled.div<{ position: 'top' | 'bottom'; width: string }>`
 
     &[data-tooltip]:hover::after {
       content: attr(data-tooltip);
-      ${theme.color.Highlight}
+      ${theme.color.Focus}
       position: absolute;
       ${theme.fill.Primary}
       ${theme.font.Caption}

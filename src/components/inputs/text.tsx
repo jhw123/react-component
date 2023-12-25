@@ -1,9 +1,10 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { MIN_BUTTON_SIZE } from '@src/constants/size'
+import { ComponentState } from '@src/constants/states'
 import { View } from '@src/foundation/view'
 import React from 'react'
-import { ChangeEvent, ComponentState, KeyboardEvent, useCallback } from 'react'
+import { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 
 interface Props {
   value: string
@@ -61,14 +62,20 @@ const Container = styled.textarea`
     padding: 8px;
     line-height: inherit;
     min-height: ${MIN_BUTTON_SIZE}px;
+    ${theme.fill.Secondary}
+    outline: none;
 
     &:focus {
-      ${theme.color.Focus}
+      ${theme.color.Primary}
       ${theme.border.Focus}
     }
 
     ::placeholder {
-      ${theme.color.Placeholder}
+      ${theme.color.Secondary}
+    }
+
+    &:disabled {
+      cursor: not-allowed;
     }
   `}
 `

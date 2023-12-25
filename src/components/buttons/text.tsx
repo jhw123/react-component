@@ -29,7 +29,6 @@ const Container = styled.button<{ color: Color; font: Font }>`
   ${({ color, font, theme }) => css`
     ${theme.font[font]}
     min-height: ${MIN_BUTTON_SIZE}px;
-    ${theme.fill.Transparent}
     ${theme.color[color]}
     border-radius: 8px;
     cursor: pointer;

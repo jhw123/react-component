@@ -27,11 +27,10 @@ const Container = styled.button<{ color: Border & Color }>`
     ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
     border-radius: 8px;
-    ${theme.border[color]}
-    ${theme.color[color]}
+    ${Border[color]}
+    ${Color[color]}
     cursor: pointer;
     padding: 4px 8px;
-    ${theme.fill.Transparent}
     width: 100%;
     display: flex;
     align-items: center;
@@ -43,10 +42,8 @@ const Container = styled.button<{ color: Border & Color }>`
     }
 
     &:disabled {
-      ${theme.fill.Disabled}
+      ${theme.fill.Inactive}
       cursor: not-allowed;
-      ${theme.color.Highlight}
-      ${theme.border.Secondary}
     }
   `}
 `

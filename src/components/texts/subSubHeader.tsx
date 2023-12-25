@@ -12,7 +12,7 @@ interface Props {
   color?: Color
 }
 
-export const BodyText = View<Props>(({ children, color = 'Primary', align = 'left', ...props }) => {
+export const SubSubHeaderText = View<Props>(({ color = 'Primary', children, align = 'left', ...props }) => {
   return (
     <Container color={color} align={align} {...props}>
       {children}
@@ -22,8 +22,9 @@ export const BodyText = View<Props>(({ children, color = 'Primary', align = 'lef
 
 const Container = styled.div<{ color: Color; align: Align }>`
   ${({ color, theme, align }) => css`
-    ${theme.font.Body}
+    ${theme.font.SubSubTitle}
     ${theme.color[color]}
+    font-weight: bold;
     text-align: ${align};
     white-space: pre-wrap;
     height: min-content;

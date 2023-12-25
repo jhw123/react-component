@@ -40,7 +40,7 @@ const Container = styled.button<{ fill: Fill }>`
   ${({ fill, theme }) => css`
     ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
-    ${theme.color.Highlight}
+    ${theme.color.Focus}
     ${theme.fill[fill]}
     border-radius: 8px;
     cursor: pointer;
@@ -58,7 +58,7 @@ const Container = styled.button<{ fill: Fill }>`
     }
 
     &:disabled {
-      ${theme.fill.Disabled}
+      ${theme.fill.Inactive}
       cursor: not-allowed;
     }
   `}
@@ -69,7 +69,7 @@ const Toggle = styled.div<{ isLeft: boolean }>`
     left: ${isLeft ? '4px' : 'calc(50%)'};
     width: calc(50% - 4px);
     height: calc(100% - 8px);
-    ${Fill.Sheet}
+    ${Fill.Primary}
     position: absolute;
     border-radius: 6px;
     transition: left 0.2s ease-in-out;
@@ -78,7 +78,7 @@ const Toggle = styled.div<{ isLeft: boolean }>`
 
 const Label = styled.div<{ active: boolean; color: Fill & Color }>`
   ${({ active, color, theme }) => css`
-    ${theme.color[active ? color : 'Highlight']}
+    ${theme.color[active ? color : 'Focus']}
     position: relative;
     transition: color 0.2s ease-in-out;
   `}

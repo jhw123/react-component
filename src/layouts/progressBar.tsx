@@ -58,7 +58,7 @@ const Status = styled.div<{ status: 'Complete' | 'InProgress' }>`
     height: 24px;
     border-radius: 50%;
     ${theme.border.Focus}
-    ${status === 'Complete' ? theme.fill.Focus : theme.fill.Sheet}
+    ${status === 'Complete' ? theme.fill.Focus : theme.fill.Primary}
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +69,7 @@ const Status = styled.div<{ status: 'Complete' | 'InProgress' }>`
 
     ::after {
       content: '';
-      ${theme.border.Highlight}
+      ${theme.border.Focus}
       width: 12px;
       height: 6px;
       border-width: 0 0 2px 2px;

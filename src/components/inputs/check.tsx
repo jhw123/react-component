@@ -13,7 +13,7 @@ interface Props {
   onCheck?: (nextState: ComponentState) => void
 }
 
-export const CheckInput = View(({ state = 'Default', children, onCheck, checkColor = 'Action', ...props }: Props) => {
+export const CheckInput = View(({ state = 'Default', children, onCheck, checkColor = 'Focus', ...props }: Props) => {
   const id = useId()
 
   const onClick = useCallback(() => {
