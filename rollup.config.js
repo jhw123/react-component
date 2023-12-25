@@ -11,7 +11,6 @@ const pkg = require('./package.json')
 export default [
   {
     input: './src/index.ts',
-    external: [/node_modules/],
     output: [
       {
         file: pkg.main,
