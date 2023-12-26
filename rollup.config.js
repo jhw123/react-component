@@ -16,14 +16,17 @@ export default [
         file: pkg.main,
         format: 'cjs',
         sourcemap: true,
+        interop: 'auto',
       },
       {
         file: pkg.module,
         format: 'es',
-        sourcemap: true
+        sourcemap: true,
       },
     ],
+    external: ['react', '@emotion/react', '@emotion/styled'],
     plugins: [
+      peerDepsExternal(),
       nodeResolve({ extensions }),
       babel({
         exclude: './node_modules/**',
@@ -31,7 +34,6 @@ export default [
         include: ['./src/**/*'],
       }),
       commonjs({ include: './node_modules/**' }),
-      peerDepsExternal(),
       typescript({ tsconfig: './tsconfig.json' }),
     ],
   },

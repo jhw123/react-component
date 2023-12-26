@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { View } from '@src/foundation/view'
 import { Color } from '@src/themes/default/color'
+import { Font } from '@src/themes/default/font'
 import React from 'react'
 
 type Align = 'left' | 'center' | 'right'
@@ -21,9 +22,9 @@ export const BodyText = View<Props>(({ children, color = 'Primary', align = 'lef
 })
 
 const Container = styled.div<{ color: Color; align: Align }>`
-  ${({ color, theme, align }) => css`
-    ${theme.font.Body}
-    ${theme.color[color]}
+  ${({ color, align }) => css`
+    ${Font.Body}
+    ${Color[color]}
     text-align: ${align};
     white-space: pre-wrap;
     height: min-content;

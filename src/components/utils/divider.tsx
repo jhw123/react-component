@@ -13,9 +13,9 @@ export const Divider = View<Props>(({ fill = 'Secondary', ...props }) => {
 })
 
 const Container = styled.div<{ fill: Fill }>`
-  ${({ fill, theme }) => css`
+  ${({ fill }) => css`
     height: 1px;
     width: auto;
-    ${theme.fill[fill]}
+    ${Fill[fill]}
   `}
 `

@@ -5,6 +5,8 @@ import { ComponentState } from '@src/constants/states'
 import { View } from '@src/foundation/view'
 import { Border } from '@src/themes/default/border'
 import { Color } from '@src/themes/default/color'
+import { Fill } from '@src/themes/default/fill'
+import { Font } from '@src/themes/default/font'
 import React from 'react'
 
 interface Props {
@@ -23,8 +25,8 @@ export const OutlineButton = View<Props>(({ state = 'Default', children, color =
 })
 
 const Container = styled.button<{ color: Border & Color }>`
-  ${({ color, theme }) => css`
-    ${theme.font.Body}
+  ${({ color }) => css`
+    ${Font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
     border-radius: 8px;
     ${Border[color]}
@@ -42,7 +44,7 @@ const Container = styled.button<{ color: Border & Color }>`
     }
 
     &:disabled {
-      ${theme.fill.Inactive}
+      ${Fill.Inactive}
       cursor: not-allowed;
     }
   `}

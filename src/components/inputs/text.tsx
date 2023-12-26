@@ -3,6 +3,10 @@ import styled from '@emotion/styled'
 import { MIN_BUTTON_SIZE } from '@src/constants/size'
 import { ComponentState } from '@src/constants/states'
 import { View } from '@src/foundation/view'
+import { Border } from '@src/themes/default/border'
+import { Color } from '@src/themes/default/color'
+import { Fill } from '@src/themes/default/fill'
+import { Font } from '@src/themes/default/font'
 import React from 'react'
 import { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 
@@ -51,31 +55,29 @@ export const TextInput = View<Props>(
 )
 
 const Container = styled.textarea`
-  ${({ theme }) => css`
-    width: 100%;
-    resize: vertical;
-    box-sizing: border-box;
-    font-family: inherit;
-    ${theme.font.Body}
-    border-radius: 8px;
-    ${theme.border.Secondary}
-    padding: 8px;
-    line-height: inherit;
-    min-height: ${MIN_BUTTON_SIZE}px;
-    ${theme.fill.Secondary}
-    outline: none;
+  width: 100%;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: inherit;
+  ${Font.Body}
+  border-radius: 8px;
+  ${Border.Secondary}
+  padding: 8px;
+  line-height: inherit;
+  min-height: ${MIN_BUTTON_SIZE}px;
+  ${Fill.Secondary}
+  outline: none;
 
-    &:focus {
-      ${theme.color.Primary}
-      ${theme.border.Focus}
-    }
+  &:focus {
+    ${Color.Primary}
+    ${Border.Focus}
+  }
 
-    ::placeholder {
-      ${theme.color.Secondary}
-    }
+  ::placeholder {
+    ${Color.Secondary}
+  }
 
-    &:disabled {
-      cursor: not-allowed;
-    }
-  `}
+  &:disabled {
+    cursor: not-allowed;
+  }
 `

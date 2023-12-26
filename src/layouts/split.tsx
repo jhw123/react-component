@@ -1,6 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { View } from '@src/foundation/view'
+import { Color } from '@src/themes/default/color'
+import { Fill } from '@src/themes/default/fill'
 import React, { MouseEvent, TouchEvent, useCallback, useEffect } from 'react'
 import { useWindowSize } from 'react-use'
 
@@ -10,135 +12,136 @@ interface Props {
   children: React.ReactNode
   initialSizes?: number[]
   direction?: Direction
+  barWidth?: number
+  dragThreshold?: number
 }
 
-const BAR_WIDTH = 12
+export const SplitView = View<Props>(
+  ({ children, initialSizes, direction = 'horizontal', barWidth = 12, dragThreshold = 5, ...props }) => {
+    const containerRef = React.useRef<HTMLDivElement>(null)
+    const childrenCnt = React.Children.count(children)
+    const [draggedbarIndex, setDraggedBarIndex] = React.useState(-1)
+    const [sizes, setSizes] = React.useState<number[]>([])
+    const [prevInitialSizes, setPrevInitialSizes] = React.useState(initialSizes)
+    const { width, height } = useWindowSize()
 
-const DRAG_THRESHOLD = 5
+    const dragBarStart = useCallback(
+      (i: number) => () => {
+        setDraggedBarIndex(i)
+        return false
+      },
+      []
+    )
 
-export const SplitView = View<Props>(({ children, initialSizes, direction = 'horizontal', ...props }) => {
-  const containerRef = React.useRef<HTMLDivElement>(null)
-  const childrenCnt = React.Children.count(children)
-  const [draggedbarIndex, setDraggedBarIndex] = React.useState(-1)
-  const [sizes, setSizes] = React.useState<number[]>([])
-  const [prevInitialSizes, setPrevInitialSizes] = React.useState(initialSizes)
-  const { width, height } = useWindowSize()
+    const dragBarEnd = useCallback(() => {
+      setDraggedBarIndex(-1)
+    }, [])
 
-  const dragBarStart = useCallback(
-    (i: number) => () => {
-      setDraggedBarIndex(i)
-      return false
-    },
-    []
-  )
+    const dragBarOver = useCallback(
+      (event: MouseEvent) => {
+        const container = containerRef.current
+        if (
+          [event.clientX, event.clientY].some(cor => cor <= dragThreshold) ||
+          width - dragThreshold <= event.clientX ||
+          height - dragThreshold <= event.clientY
+        ) {
+          setDraggedBarIndex(-1)
+        }
+        if (container && draggedbarIndex >= 0) {
+          event.preventDefault()
+          const newSizes = [...sizes]
+          const base = newSizes.slice(0, draggedbarIndex).reduce((s, n) => s + n, 0)
+          const diff =
+            direction === 'horizontal'
+              ? event.clientX - base - container.getBoundingClientRect().left - newSizes[draggedbarIndex]
+              : event.clientY - base - container.getBoundingClientRect().top - newSizes[draggedbarIndex]
+          newSizes[draggedbarIndex] += diff
+          newSizes[draggedbarIndex + 1] -= diff
+          setSizes(newSizes)
+        }
+      },
+      [direction, draggedbarIndex, height, width]
+    )
 
-  const dragBarEnd = useCallback(() => {
-    setDraggedBarIndex(-1)
-  }, [])
+    const dragBarOverByTouch = useCallback(
+      (event: TouchEvent) => {
+        const container = containerRef.current
+        if (container && draggedbarIndex >= 0) {
+          event.preventDefault()
+          const newSizes = [...sizes]
+          const base = newSizes.slice(0, draggedbarIndex).reduce((s, n) => s + n, 0)
+          const diff =
+            direction === 'horizontal'
+              ? event.touches[0].clientX - base - container.getBoundingClientRect().left - newSizes[draggedbarIndex]
+              : event.touches[0].clientY - base - container.getBoundingClientRect().top - newSizes[draggedbarIndex]
+          newSizes[draggedbarIndex] += diff
+          newSizes[draggedbarIndex + 1] -= diff
+          setSizes(newSizes)
+        }
+      },
+      [direction, draggedbarIndex]
+    )
 
-  const dragBarOver = useCallback(
-    (event: MouseEvent) => {
-      const container = containerRef.current
-      if (
-        [event.clientX, event.clientY].some(cor => cor <= DRAG_THRESHOLD) ||
-        width - DRAG_THRESHOLD <= event.clientX ||
-        height - DRAG_THRESHOLD <= event.clientY
-      ) {
-        setDraggedBarIndex(-1)
-      }
-      if (container && draggedbarIndex >= 0) {
-        event.preventDefault()
-        const newSizes = [...sizes]
-        const base = newSizes.slice(0, draggedbarIndex).reduce((s, n) => s + n, 0)
-        const diff =
+    useEffect(() => {
+      const observer = new ResizeObserver(() => {
+        const fraction = prevInitialSizes?.reduce((s, n) => s + n, 0) ?? childrenCnt
+        const portion =
           direction === 'horizontal'
-            ? event.clientX - base - container.getBoundingClientRect().left - newSizes[draggedbarIndex]
-            : event.clientY - base - container.getBoundingClientRect().top - newSizes[draggedbarIndex]
-        newSizes[draggedbarIndex] += diff
-        newSizes[draggedbarIndex + 1] -= diff
+            ? Math.max(0, (containerRef.current?.clientWidth ?? 0) - (childrenCnt - 1) * barWidth) / fraction
+            : Math.max(0, (containerRef.current?.clientHeight ?? 0) - (childrenCnt - 1) * barWidth) / fraction
+        const newSizes = [...Array(childrenCnt)].map((_, i) => (prevInitialSizes?.[i] ?? 1) * portion)
         setSizes(newSizes)
-      }
-    },
-    [direction, draggedbarIndex, height, width]
-  )
-
-  const dragBarOverByTouch = useCallback(
-    (event: TouchEvent) => {
+      })
       const container = containerRef.current
-      if (container && draggedbarIndex >= 0) {
-        event.preventDefault()
-        const newSizes = [...sizes]
-        const base = newSizes.slice(0, draggedbarIndex).reduce((s, n) => s + n, 0)
-        const diff =
-          direction === 'horizontal'
-            ? event.touches[0].clientX - base - container.getBoundingClientRect().left - newSizes[draggedbarIndex]
-            : event.touches[0].clientY - base - container.getBoundingClientRect().top - newSizes[draggedbarIndex]
-        newSizes[draggedbarIndex] += diff
-        newSizes[draggedbarIndex + 1] -= diff
-        setSizes(newSizes)
-      }
-    },
-    [direction, draggedbarIndex]
-  )
 
-  useEffect(() => {
-    const observer = new ResizeObserver(() => {
-      const fraction = prevInitialSizes?.reduce((s, n) => s + n, 0) ?? childrenCnt
-      const portion =
-        direction === 'horizontal'
-          ? Math.max(0, (containerRef.current?.clientWidth ?? 0) - (childrenCnt - 1) * BAR_WIDTH) / fraction
-          : Math.max(0, (containerRef.current?.clientHeight ?? 0) - (childrenCnt - 1) * BAR_WIDTH) / fraction
-      const newSizes = [...Array(childrenCnt)].map((_, i) => (prevInitialSizes?.[i] ?? 1) * portion)
-      setSizes(newSizes)
-    })
-    const container = containerRef.current
-
-    if (container) {
-      observer.observe(containerRef.current)
-    }
-
-    return () => {
       if (container) {
-        observer.unobserve(container)
+        observer.observe(containerRef.current)
       }
-    }
-  }, [childrenCnt, direction, prevInitialSizes])
 
-  useEffect(() => {
-    if (initialSizes?.some((size, i) => prevInitialSizes?.[i] !== size)) {
-      setPrevInitialSizes(initialSizes)
-    }
-  }, [initialSizes, prevInitialSizes])
+      return () => {
+        if (container) {
+          observer.unobserve(container)
+        }
+      }
+    }, [childrenCnt, direction, prevInitialSizes])
 
-  return (
-    <Container
-      {...props}
-      ref={containerRef}
-      direction={direction}
-      onTouchMove={dragBarOverByTouch}
-      onMouseMove={dragBarOver}
-      onMouseUp={dragBarEnd}
-      onTouchEnd={dragBarEnd}
-    >
-      {React.Children.map(children, (child, i) => {
-        const hasBar = i < childrenCnt - 1
-        return (
-          <>
-            <ChildView style={{ [direction === 'horizontal' ? 'width' : 'height']: sizes[i] }}>{child}</ChildView>
-            {hasBar && (
-              <Bar
-                direction={direction}
-                isOnDrag={i === draggedbarIndex}
-                onTouchStart={dragBarStart(i)}
-                onMouseDown={dragBarStart(i)}
-              />
-            )}
-          </>
-        )
-      })}
-    </Container>
-  )
-})
+    useEffect(() => {
+      if (initialSizes?.some((size, i) => prevInitialSizes?.[i] !== size)) {
+        setPrevInitialSizes(initialSizes)
+      }
+    }, [initialSizes, prevInitialSizes])
+
+    return (
+      <Container
+        {...props}
+        ref={containerRef}
+        direction={direction}
+        onTouchMove={dragBarOverByTouch}
+        onMouseMove={dragBarOver}
+        onMouseUp={dragBarEnd}
+        onTouchEnd={dragBarEnd}
+      >
+        {React.Children.map(children, (child, i) => {
+          const hasBar = i < childrenCnt - 1
+          return (
+            <>
+              <ChildView style={{ [direction === 'horizontal' ? 'width' : 'height']: sizes[i] }}>{child}</ChildView>
+              {hasBar && (
+                <Bar
+                  barWidth={barWidth}
+                  direction={direction}
+                  isOnDrag={i === draggedbarIndex}
+                  onTouchStart={dragBarStart(i)}
+                  onMouseDown={dragBarStart(i)}
+                />
+              )}
+            </>
+          )
+        })}
+      </Container>
+    )
+  }
+)
 
 const Container = styled.div<{ direction: Direction }>`
   ${({ direction }) => css`
@@ -157,29 +160,29 @@ const ChildView = styled.div`
   overflow: auto;
 `
 
-const Bar = styled.div<{ isOnDrag: boolean; direction: Direction }>`
-  ${({ isOnDrag, direction, theme }) => css`
-    width: ${direction === 'horizontal' ? BAR_WIDTH + 'px' : '100%'};
-    height: ${direction === 'horizontal' ? '100%' : BAR_WIDTH + 'px'};
-    ${isOnDrag ? theme.fill.Focus : theme.fill.Primary}
+const Bar = styled.div<{ isOnDrag: boolean; direction: Direction; barWidth: number }>`
+  ${({ isOnDrag, direction, barWidth }) => css`
+    width: ${direction === 'horizontal' ? barWidth + 'px' : '100%'};
+    height: ${direction === 'horizontal' ? '100%' : barWidth + 'px'};
+    ${isOnDrag ? Fill.Focus : Fill.Primary}
     cursor: ${direction === 'horizontal' ? 'col-resize' : 'row-resize'};
-    ${isOnDrag ? theme.color.Focus : theme.color.Secondary}
+    ${isOnDrag ? Color.Focus : Color.Secondary}
     position: relative;
 
     &:hover {
-      ${theme.fill.Focus}
-      ${theme.color.Focus}
+      ${Fill.Focus}
+      ${Color.Focus}
     }
 
     &::after {
       content: '•••';
-      font-size: ${BAR_WIDTH}px;
+      font-size: ${barWidth}px;
       display: block;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) rotate(${direction === 'horizontal' ? 90 : 0}deg);
       position: absolute;
-      line-height: ${BAR_WIDTH}px;
+      line-height: ${barWidth}px;
     }
   `}
 `

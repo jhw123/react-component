@@ -45,7 +45,7 @@ const Checkbox = styled.input`
     border-radius: 8px;
     height: 28px;
     width: 28px;
-    ${theme.border.Secondary}
+    ${Border.Secondary}
     appearance: none;
     margin: 0 8px 0 0;
     cursor: pointer;
@@ -59,7 +59,7 @@ const Label = styled.label`
 
 const Check = styled.div<{ border: Border; checked: boolean }>`
   ${({ border, checked, theme }) => css`
-    ${theme.border[border]}
+    ${Border[border]}
     ${!checked &&
     css`
       filter: grayscale(1);

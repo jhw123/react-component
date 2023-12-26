@@ -4,6 +4,7 @@ import { MIN_BUTTON_SIZE } from '@src/constants/size'
 import { ComponentState } from '@src/constants/states'
 import { View } from '@src/foundation/view'
 import { Fill } from '@src/themes/default/fill'
+import { Font } from '@src/themes/default/font'
 import React from 'react'
 
 interface Props {
@@ -22,11 +23,11 @@ export const FillButton = View<Props>(({ children, fill, onClick, state = 'Defau
 })
 
 const Container = styled.button<{ fill: Fill }>`
-  ${({ fill, theme }) => css`
-    ${theme.font.Body}
+  ${({ fill }) => css`
+    ${Font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
     color: white;
-    ${theme.fill[fill]}
+    ${Fill[fill]}
     border-radius: 8px;
     cursor: pointer;
     padding: 4px 8px;
@@ -41,7 +42,7 @@ const Container = styled.button<{ fill: Fill }>`
     }
 
     &:disabled {
-      ${theme.fill.Inactive}
+      ${Fill.Inactive}
       cursor: not-allowed;
     }
   `}

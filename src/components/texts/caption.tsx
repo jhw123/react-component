@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { View } from '@src/foundation/view'
 import { Color } from '@src/themes/default/color'
+import { Font } from '@src/themes/default/font'
 import React from 'react'
 
 type Align = 'left' | 'center' | 'right'
@@ -21,9 +22,9 @@ export const CaptionText = View<Props>(({ children, color = 'Secondary', align =
 })
 
 const Container = styled.div<{ color: Color; align: Align }>`
-  ${({ color, align, theme }) => css`
-    ${theme.font.Caption}
-    ${theme.color[color]}
+  ${({ color, align }) => css`
+    ${Font.Caption}
+    ${Color[color]}
     text-align: ${align};
     white-space: pre-wrap;
     height: min-content;

@@ -45,11 +45,11 @@ const RadioCircle = styled.input<{ fill: Fill }>`
     border-radius: 50%;
     height: 24px;
     width: 24px;
-    ${theme.fill[fill]}
+    ${Fill[fill]}
     appearance: none;
     margin: 0 8px 0 0;
     cursor: pointer;
-    ${fill === 'Primary' && theme.border.Secondary}
+    ${fill === 'Primary' && Border.Secondary}
     flex-shrink: 0;
   `}
 `
@@ -60,7 +60,7 @@ const Label = styled.label`
 
 const Check = styled.div`
   ${({ theme }) => css`
-    ${theme.fill.Primary}
+    ${Fill.Primary}
     width: 12px;
     height: 12px;
     position: absolute;

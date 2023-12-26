@@ -2,6 +2,8 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { MIN_BUTTON_SIZE } from '@src/constants/size'
 import { View } from '@src/foundation/view'
+import { Border } from '@src/themes/default/border'
+import { Fill } from '@src/themes/default/fill'
 import React from 'react'
 import { ChangeEvent, useCallback } from 'react'
 
@@ -33,26 +35,22 @@ export const SelectInput = View(({ options, onSelect, value, ...props }: Props) 
 })
 
 const Container = styled.div`
-  ${({ theme }) => css`
-    position: relative;
-    ${theme.fill.Secondary}
-  `}
+  position: relative;
+  ${Fill.Secondary}
 `
 
 const Options = styled.select`
-  ${({ theme }) => css`
-    padding: 4px;
-    padding-right: 16px;
-    border-radius: 8px;
-    height: ${MIN_BUTTON_SIZE}px;
-    cursor: pointer;
-    ${theme.border.Secondary}
-    outline: none;
-    width: 100%;
-    font-size: inherit;
-    text-align: center;
-    appearance: none;
-  `}
+  padding: 4px;
+  padding-right: 16px;
+  border-radius: 8px;
+  height: ${MIN_BUTTON_SIZE}px;
+  cursor: pointer;
+  ${Border.Secondary}
+  outline: none;
+  width: 100%;
+  font-size: inherit;
+  text-align: center;
+  appearance: none;
 `
 
 const ArrowDown = styled.div`

@@ -25,14 +25,14 @@ const dotFlashing = keyframes`
 `
 
 const Container = styled.div<{ fill: Fill & Color }>`
-  ${({ fill, theme }) => css`
+  ${({ fill }) => css`
     position: relative;
     width: ${DOT_SIZE}px;
     height: ${DOT_SIZE}px;
     border-radius: 5px;
     display: inline-block;
-    ${theme.fill[fill]}
-    ${theme.color[fill]}
+    ${Fill[fill]}
+    ${Color[fill]}
     animation: ${dotFlashing} 0.8s infinite linear alternate;
     animation-delay: 0.4s;
     margin-left: ${DOT_SIZE + 4}px;
@@ -50,8 +50,8 @@ const Container = styled.div<{ fill: Fill & Color }>`
       width: ${DOT_SIZE}px;
       height: ${DOT_SIZE}px;
       border-radius: 5px;
-      ${theme.fill[fill]}
-      ${theme.color[fill]}
+      ${Fill[fill]}
+      ${Color[fill]}
       animation: ${dotFlashing} 0.8s infinite alternate;
       animation-delay: 0s;
     }
@@ -60,8 +60,8 @@ const Container = styled.div<{ fill: Fill & Color }>`
       width: ${DOT_SIZE}px;
       height: ${DOT_SIZE}px;
       border-radius: 5px;
-      ${theme.fill[fill]}
-      ${theme.color[fill]}
+      ${Fill[fill]}
+      ${Color[fill]}
       animation: ${dotFlashing} 0.8s infinite alternate;
       animation-delay: 0.8s;
     }

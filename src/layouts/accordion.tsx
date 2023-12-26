@@ -5,6 +5,8 @@ import { Divider } from '@src/components/utils/divider'
 import { View } from '@src/foundation/view'
 import React, { useCallback, useState } from 'react'
 import { Collapsible } from './collapsible'
+import { Font } from '@src/themes/default/font'
+import { Border } from '@src/themes/default/border'
 
 interface Props {
   children: React.ReactNode
@@ -48,14 +50,12 @@ export const Accordion = View<Props>(({ children, titles, initialStates = [], ..
 })
 
 const Title = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
-    width: 100%;
-    ${theme.font.SubTitle}
-  `}
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  width: 100%;
+  ${Font.SubTitle}
 `
 
 const Box = styled.div`
@@ -64,25 +64,21 @@ const Box = styled.div`
 `
 
 const ArrowUp = styled.div`
-  ${({ theme }) => css`
-    ${theme.border.Primary}
-    width: 12px;
-    height: 12px;
-    transform: rotate(45deg);
-    border-bottom: none;
-    border-right: none;
-  `}
+  ${Border.Primary}
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+  border-bottom: none;
+  border-right: none;
 `
 
 const ArrowDown = styled.div`
-  ${({ theme }) => css`
-    ${theme.border.Primary}
-    width: 12px;
-    height: 12px;
-    transform: rotate(225deg);
-    border-bottom: none;
-    border-right: none;
-  `}
+  ${Border.Primary}
+  width: 12px;
+  height: 12px;
+  transform: rotate(225deg);
+  border-bottom: none;
+  border-right: none;
 `
 
 const Row = styled.div`

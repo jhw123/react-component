@@ -5,6 +5,7 @@ import { ComponentState } from '@src/constants/states'
 import { View } from '@src/foundation/view'
 import { Color } from '@src/themes/default/color'
 import { Fill } from '@src/themes/default/fill'
+import { Font } from '@src/themes/default/font'
 import React, { useCallback } from 'react'
 
 interface Props {
@@ -37,11 +38,11 @@ export const ToggleButton = View<Props>(
 )
 
 const Container = styled.button<{ fill: Fill }>`
-  ${({ fill, theme }) => css`
-    ${theme.font.Body}
+  ${({ fill }) => css`
+    ${Font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
-    ${theme.color.Focus}
-    ${theme.fill[fill]}
+    ${Color.Focus}
+    ${Fill[fill]}
     border-radius: 8px;
     cursor: pointer;
     padding: 4px 8px;
@@ -58,7 +59,7 @@ const Container = styled.button<{ fill: Fill }>`
     }
 
     &:disabled {
-      ${theme.fill.Inactive}
+      ${Fill.Inactive}
       cursor: not-allowed;
     }
   `}
@@ -78,7 +79,7 @@ const Toggle = styled.div<{ isLeft: boolean }>`
 
 const Label = styled.div<{ active: boolean; color: Fill & Color }>`
   ${({ active, color, theme }) => css`
-    ${theme.color[active ? color : 'Focus']}
+    ${Color[active ? color : 'Focus']}
     position: relative;
     transition: color 0.2s ease-in-out;
   `}
