@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-import { Fill } from '@src/themes/default/fill'
+import { Fill } from '@src/foundation/fill'
 import { View } from '@src/foundation/view'
 import React from 'react'
 

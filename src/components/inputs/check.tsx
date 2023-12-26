@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { ComponentState } from '@src/constants/states'
 import { View } from '@src/foundation/view'
-import { Border } from '@src/themes/default/border'
+import { Border } from '@src/foundation/border'
 import React from 'react'
 import { useCallback, useId } from 'react'
 

@@ -2,9 +2,9 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { View } from '@src/foundation'
 import React from 'react'
-import { Fill } from '@src/themes/default/fill'
-import { Color } from '@src/themes/default/color'
-import { Font } from '@src/themes/default/font'
+import { Fill } from '@src/foundation/fill'
+import { Color } from '@src/foundation/color'
+import { Font } from '@src/foundation/font'
 
 interface Props {
   tooltip: string

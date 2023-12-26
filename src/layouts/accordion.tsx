@@ -5,8 +5,8 @@ import { Divider } from '@src/components/utils/divider'
 import { View } from '@src/foundation/view'
 import React, { useCallback, useState } from 'react'
 import { Collapsible } from './collapsible'
-import { Font } from '@src/themes/default/font'
-import { Border } from '@src/themes/default/border'
+import { Font } from '@src/foundation/font'
+import { Border } from '@src/foundation/border'
 
 interface Props {
   children: React.ReactNode

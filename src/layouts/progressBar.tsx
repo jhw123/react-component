@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { View } from '@src/foundation/view'
-import { Border } from '@src/themes/default/border'
-import { Color } from '@src/themes/default/color'
-import { Fill } from '@src/themes/default/fill'
+import { Border } from '@src/foundation/border'
+import { Color } from '@src/foundation/color'
+import { Fill } from '@src/foundation/fill'
 import React from 'react'
 import { Children } from 'react'
 

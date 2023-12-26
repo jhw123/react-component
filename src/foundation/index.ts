@@ -1,2 +1,7 @@
 export * from './view'
 export * from './resetStyle'
+export * from './color'
+export * from './border'
+export * from './elevation'
+export * from './fill'
+export * from './font'

@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { View } from '@src/foundation/view'
-import { Color } from '@src/themes/default/color'
-import { Font } from '@src/themes/default/font'
+import { Color } from '@src/foundation/color'
+import { Font } from '@src/foundation/font'
 import React from 'react'
 
 type Align = 'left' | 'center' | 'right'

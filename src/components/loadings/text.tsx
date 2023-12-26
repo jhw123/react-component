@@ -1,7 +1,7 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Color } from '@src/themes/default/color'
-import { Fill } from '@src/themes/default/fill'
+import { Color } from '@src/foundation/color'
+import { Fill } from '@src/foundation/fill'
 import React from 'react'
 
 interface Props {

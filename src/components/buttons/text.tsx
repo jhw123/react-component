@@ -3,8 +3,8 @@ import styled from '@emotion/styled'
 import { MIN_BUTTON_SIZE } from '@src/constants/size'
 import { ComponentState } from '@src/constants/states'
 import { View } from '@src/foundation/view'
-import { Color } from '@src/themes/default/color'
-import { Font } from '@src/themes/default/font'
+import { Color } from '@src/foundation/color'
+import { Font } from '@src/foundation/font'
 import React from 'react'
 
 interface Props {
