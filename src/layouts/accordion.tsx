@@ -23,7 +23,7 @@ export const Accordion = View<Props>(({ children, titles, initialStates = [], ..
       newShow[i] = !newShow[i]
       setShow(newShow)
     },
-    []
+    [show]
   )
 
   return (

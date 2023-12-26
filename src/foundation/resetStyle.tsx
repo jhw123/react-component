@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { Fill } from '@src/themes/default/fill'
 
 export const ResetStyle = css`
   html,
@@ -111,6 +112,7 @@ export const ResetStyle = css`
   }
   body {
     line-height: 1;
+    ${Fill.Primary}
   }
   ol,
   ul {
