@@ -1,12 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { MIN_BUTTON_SIZE } from '@src/constants/size'
-import { ComponentState } from '@src/constants/states'
-import { View } from '@src/foundation/view'
-import { Color } from '@src/foundation/color'
-import { Fill } from '@src/foundation/fill'
-import { Font } from '@src/foundation/font'
-import React, { useCallback } from 'react'
+import React, { ComponentState, useCallback } from 'react'
+import { MIN_BUTTON_SIZE } from '../../constants/size'
+import { Fill, Color, View, Font } from '../../foundation'
 
 interface Props {
   state?: Exclude<ComponentState, 'Checked'>

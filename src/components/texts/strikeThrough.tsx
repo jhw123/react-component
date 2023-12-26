@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { View } from '@src/foundation/view'
 import React from 'react'
+import { View } from '../../foundation'
 
 interface Props {
   children: React.ReactNode

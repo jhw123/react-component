@@ -1,10 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { View } from '@src/foundation/view'
-import { Color } from '@src/foundation/color'
-import { Fill } from '@src/foundation/fill'
 import React, { MouseEvent, TouchEvent, useCallback, useEffect } from 'react'
 import { useWindowSize } from 'react-use'
+import { View, Fill, Color } from '../foundation'
 
 type Direction = 'horizontal' | 'vertical'
 

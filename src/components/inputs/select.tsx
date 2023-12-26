@@ -1,11 +1,7 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { MIN_BUTTON_SIZE } from '@src/constants/size'
-import { View } from '@src/foundation/view'
-import { Border } from '@src/foundation/border'
-import { Fill } from '@src/foundation/fill'
-import React from 'react'
-import { ChangeEvent, useCallback } from 'react'
+import React, { ChangeEvent, useCallback } from 'react'
+import { MIN_BUTTON_SIZE } from '../../constants/size'
+import { Border, Fill, View } from '../../foundation'
 
 interface Props {
   options: Readonly<string[]>

@@ -1,11 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { View } from '@src/foundation/view'
-import { Border } from '@src/foundation/border'
-import { Color } from '@src/foundation/color'
-import { Fill } from '@src/foundation/fill'
 import React from 'react'
 import { Children } from 'react'
+import { View, Border, Fill, Color } from '../foundation'
 
 interface Props {
   children?: React.ReactNode

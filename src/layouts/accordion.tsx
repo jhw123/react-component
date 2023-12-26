@@ -1,12 +1,9 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { TextButton } from '@src/components/buttons/text'
-import { Divider } from '@src/components/utils/divider'
-import { View } from '@src/foundation/view'
+
 import React, { useCallback, useState } from 'react'
 import { Collapsible } from './collapsible'
-import { Font } from '@src/foundation/font'
-import { Border } from '@src/foundation/border'
+import { Divider, TextButton } from '../components'
+import { View, Font, Border } from '../foundation'
 
 interface Props {
   children: React.ReactNode

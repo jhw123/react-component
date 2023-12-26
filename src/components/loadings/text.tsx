@@ -1,8 +1,7 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Color } from '@src/foundation/color'
-import { Fill } from '@src/foundation/fill'
 import React from 'react'
+import { Fill, Color } from '../../foundation'
 
 interface Props {
   fill?: Fill & Color
