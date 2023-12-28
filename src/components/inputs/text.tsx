@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React, { ChangeEvent, ComponentState, KeyboardEvent, useCallback } from 'react'
-import { MIN_BUTTON_SIZE } from '../../constants/size'
+import { MIN_BUTTON_SIZE } from '../../foundation/size'
 import { Border, Color, Fill, Font, View } from '../../foundation'
 
 interface Props {
@@ -72,5 +72,6 @@ const Container = styled.textarea`
 
   &:disabled {
     cursor: not-allowed;
+    filter: grayscale(0.8);
   }
 `

@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { ComponentState } from 'react'
-import { MIN_BUTTON_SIZE } from '../../constants/size'
-import { Border, Color, View, Font, Fill } from '../../foundation'
+import { Border, Color, Font, View } from '../../foundation'
+import { MIN_BUTTON_SIZE } from '../../foundation/size'
 
 interface Props {
   state?: ComponentState
@@ -39,7 +39,7 @@ const Container = styled.button<{ color: Border & Color }>`
     }
 
     &:disabled {
-      ${Fill.Inactive}
+      filter: grayscale(0.8);
       cursor: not-allowed;
     }
   `}

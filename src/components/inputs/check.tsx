@@ -37,17 +37,15 @@ const Container = styled.div`
 `
 
 const Checkbox = styled.input`
-  ${({ theme }) => css`
-    padding: 4px;
-    padding-right: 16px;
-    border-radius: 8px;
-    height: 28px;
-    width: 28px;
-    ${Border.Secondary}
-    appearance: none;
-    margin: 0 8px 0 0;
-    cursor: pointer;
-  `}
+  padding: 4px;
+  padding-right: 16px;
+  border-radius: 8px;
+  height: 28px;
+  width: 28px;
+  ${Border.Secondary}
+  appearance: none;
+  margin: 0 8px 0 0;
+  cursor: pointer;
 `
 
 const Label = styled.label`
@@ -56,7 +54,7 @@ const Label = styled.label`
 `
 
 const Check = styled.div<{ border: Border; checked: boolean }>`
-  ${({ border, checked, theme }) => css`
+  ${({ border, checked }) => css`
     ${Border[border]}
     ${!checked &&
     css`

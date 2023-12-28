@@ -37,7 +37,7 @@ const Container = styled.div`
 `
 
 const RadioCircle = styled.input<{ fill: Fill }>`
-  ${({ fill, theme }) => css`
+  ${({ fill }) => css`
     padding-right: 16px;
     border-radius: 50%;
     height: 24px;
@@ -56,15 +56,13 @@ const Label = styled.label`
 `
 
 const Check = styled.div`
-  ${({ theme }) => css`
-    ${Fill.Primary}
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    pointer-events: none;
-    border-radius: 50%;
-    transform: translate(50%, 50%);
-  `}
+  ${Fill.Primary}
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(50%, 50%);
 `
