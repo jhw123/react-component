@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React, { ComponentState } from 'react'
+import React from 'react'
 import { useCallback, useId } from 'react'
-import { Fill, Border, View } from '../../foundation'
+import { Fill, Border, View, ComponentState } from '../../foundation'
 
 interface Props {
   children?: React.ReactNode

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React, { ComponentState } from 'react'
-import { View } from '../foundation'
+import React from 'react'
+import { ComponentState, View } from '../foundation'
 
 interface Props {
   state?: Extract<ComponentState, 'Default' | 'Checked'>

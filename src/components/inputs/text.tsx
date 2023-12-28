@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
-import React, { ChangeEvent, ComponentState, KeyboardEvent, useCallback } from 'react'
+import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
-import { Border, Color, Fill, Font, View } from '../../foundation'
+import { Border, Color, ComponentState, Fill, Font, View } from '../../foundation'
 
 interface Props {
   value: string

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React, { ComponentState } from 'react'
-import { Border, Color, Font, View } from '../../foundation'
+import React from 'react'
+import { Border, Color, ComponentState, Font, View } from '../../foundation'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
 
 interface Props {

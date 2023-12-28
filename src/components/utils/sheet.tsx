@@ -4,11 +4,11 @@ import React from 'react'
 import { Fill, View, Elevation } from '../../foundation'
 
 interface Props {
-  fill: Fill
+  fill?: Fill
   children?: React.ReactNode
 }
 
-export const Sheet = View<Props>(({ fill, children, ...props }) => {
+export const Sheet = View<Props>(({ fill = 'Secondary', children, ...props }) => {
   return (
     <Container {...props} fill={fill}>
       {children}
