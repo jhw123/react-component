@@ -54,5 +54,6 @@
   "bugs": {
     "url": "https://github.com/jhw123/react-component/issues"
   },
-  "homepage": "https://github.com/jhw123/react-component#readme"
+  "homepage": "https://github.com/jhw123/react-component#readme",
+  "packageManager": "yarn@4.0.2"
 }
