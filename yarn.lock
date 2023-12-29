@@ -492,35 +492,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jhw123/react-component@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@jhw123/react-component@workspace:."
-  dependencies:
-    "@babel/core": "npm:^7.23.6"
-    "@emotion/react": "npm:^11.7.1"
-    "@emotion/styled": "npm:^11.6.0"
-    "@rollup/plugin-babel": "npm:^6.0.4"
-    "@rollup/plugin-commonjs": "npm:^25.0.4"
-    "@rollup/plugin-node-resolve": "npm:^15.2.1"
-    "@rollup/plugin-typescript": "npm:^11.1.5"
-    "@types/react": "npm:^18.2.22"
-    "@typescript-eslint/parser": "npm:^6.7.2"
-    eslint: "npm:^8.15.0"
-    eslint-config-prettier: "npm:^9.0.0"
-    prettier: "npm:^2.8.7"
-    react: "npm:^18.2.0"
-    react-use: "npm:^17.4.0"
-    rollup: "npm:^3.29.2"
-    rollup-plugin-peer-deps-external: "npm:^2.2.4"
-    ts-loader: "npm:^9.3.0"
-    typescript: "npm:^5.2.2"
-  peerDependencies:
-    "@emotion/react": ^11.7.1
-    "@emotion/styled": ^11.6.0
-    react: ^18.2.0
-  languageName: unknown
-  linkType: soft
-
 "@jridgewell/gen-mapping@npm:^0.3.0, @jridgewell/gen-mapping@npm:^0.3.2":
   version: 0.3.3
   resolution: "@jridgewell/gen-mapping@npm:0.3.3"
@@ -826,6 +797,35 @@ __metadata:
   checksum: e6b35338a98fcf6719388a2dce7ae476622f6fa37b0d5e3607de260100a72b8cb86e76b73b16a9a3c434e8386e1ea394cd946add1e4ce712d3b8a7fd0e221830
   languageName: node
   linkType: hard
+
+"@wookiejin/react-component@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@wookiejin/react-component@workspace:."
+  dependencies:
+    "@babel/core": "npm:^7.23.6"
+    "@emotion/react": "npm:^11.7.1"
+    "@emotion/styled": "npm:^11.6.0"
+    "@rollup/plugin-babel": "npm:^6.0.4"
+    "@rollup/plugin-commonjs": "npm:^25.0.4"
+    "@rollup/plugin-node-resolve": "npm:^15.2.1"
+    "@rollup/plugin-typescript": "npm:^11.1.5"
+    "@types/react": "npm:^18.2.22"
+    "@typescript-eslint/parser": "npm:^6.7.2"
+    eslint: "npm:^8.15.0"
+    eslint-config-prettier: "npm:^9.0.0"
+    prettier: "npm:^2.8.7"
+    react: "npm:^18.2.0"
+    react-use: "npm:^17.4.0"
+    rollup: "npm:^3.29.2"
+    rollup-plugin-peer-deps-external: "npm:^2.2.4"
+    ts-loader: "npm:^9.3.0"
+    typescript: "npm:^5.2.2"
+  peerDependencies:
+    "@emotion/react": ^11.7.1
+    "@emotion/styled": ^11.6.0
+    react: ^18.2.0
+  languageName: unknown
+  linkType: soft
 
 "@xobotyi/scrollbar-width@npm:^1.9.5":
   version: 1.9.5
