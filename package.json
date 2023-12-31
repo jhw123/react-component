@@ -1,55 +1,57 @@
 {
-  "name": "@jhw123/react-component",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/jhw123"
-  },
-  "version": "0.0.6",
+  "name": "@wookiejin/react-component",
+  "version": "0.0.1",
   "author": "jhw123",
   "license": "MIT",
-  "typings": "dist/index.d.ts",
-  "sideEffects": false,
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "typings": "./dist/cjs/index.d.ts",
+  "sideEffects": true,
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "files": [
-    "dist"
+    "./dist"
   ],
-  "types": "dist/index.d.ts",
+  "types": "./dist/cjs/index.d.ts",
   "scripts": {
     "rollup": "rollup -c",
-    "publish-to-npm": "yarn rollup; npm publish"
+    "type-check": "tsc --noEmit",
+    "publish": "rollup --bundleConfigAsCjs && npm publish --access public"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-use": "^17.4.0"
+  },
   "devDependencies": {
+    "@babel/core": "^7.23.6",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "@rollup/plugin-commonjs": "^22.0.1",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.3",
-    "@types/react": "^16.9.0",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/react": "^18.2.22",
+    "@typescript-eslint/parser": "^6.7.2",
     "eslint": "^8.15.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "eslint-webpack-plugin": "^3.1.1",
-    "prettier": "^2.6.2",
-    "react": "^16.9.0",
-    "rollup": "^2.76.0",
-    "rollup-plugin-dts": "^4.2.2",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^2.8.7",
+    "react": "^18.2.0",
+    "rollup": "^3.29.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-terser": "^7.0.2",
     "ts-loader": "^9.3.0",
-    "tslib": "^2.4.0",
-    "typescript": "^4.6.4"
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "react": "^16.9.0",
     "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0"
-  }
+    "@emotion/styled": "^11.6.0",
+    "react": "^18.2.0"
+  },
+  "description": "This library aims to provide useful semantic colorsets, HOCs and components for easy layout building.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhw123/react-component.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/jhw123/react-component/issues"
+  },
+  "homepage": "https://github.com/jhw123/react-component#readme",
+  "packageManager": "yarn@4.0.2"
 }
