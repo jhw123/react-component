@@ -1,4 +1,4 @@
 export * from './accordion'
 export * from './collapsible'
-export * from './progressBar'
+export * from './progress'
 export * from './split'

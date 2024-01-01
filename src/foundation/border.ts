@@ -14,8 +14,8 @@ export const Border = {
   Danger: css`
     border: 1px solid ${BaseColor.Red};
   `,
-  Inactive: css`
-    border: 1px solid ${BaseColor.Gray010};
+  Warning: css`
+    border: 1px solid ${BaseColor.Orange};
   `,
   Focus: css`
     border: 1px solid ${BaseColor.Blue030};

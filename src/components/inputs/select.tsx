@@ -32,7 +32,6 @@ export const SelectInput = View(({ options, onSelect, value, ...props }: Props) 
 
 const Container = styled.div`
   position: relative;
-  ${Fill.Secondary}
 `
 
 const Options = styled.select`

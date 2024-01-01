@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
 import { useCallback, useId } from 'react'
-import { Border, ComponentState, View } from '../../foundation'
+import { Border, ComponentState, Font, View } from '../../foundation'
 
 interface Props {
   children?: React.ReactNode
@@ -20,7 +20,7 @@ export const CheckInput = View(({ state = 'Default', children, onCheck, checkCol
 
   return (
     <Container {...props}>
-      <Checkbox id={id} type="checkbox" onClick={onClick} />
+      <Checkbox id={id} type="checkbox" border={checkColor} onClick={onClick} disabled={state === 'Disabled'} />
       <Label htmlFor={id}>{children}</Label>
       <Check border={checkColor} checked={state === 'Checked'} />
     </Container>
@@ -36,21 +36,29 @@ const Container = styled.div`
   user-select: none;
 `
 
-const Checkbox = styled.input`
-  padding: 4px;
-  padding-right: 16px;
-  border-radius: 8px;
-  height: 28px;
-  width: 28px;
-  ${Border.Secondary}
-  appearance: none;
-  margin: 0 8px 0 0;
-  cursor: pointer;
+const Checkbox = styled.input<{ border: Border }>`
+  ${({ border }) => css`
+    padding: 4px;
+    padding-right: 16px;
+    border-radius: 8px;
+    height: 28px;
+    width: 28px;
+    ${Border[border]}
+    appearance: none;
+    margin: 0 8px 0 0;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+      filter: grayscale(1);
+    }
+  `}
 `
 
 const Label = styled.label`
   margin-top: 3px;
   cursor: pointer;
+  ${Font.Body}
 `
 
 const Check = styled.div<{ border: Border; checked: boolean }>`
@@ -64,8 +72,8 @@ const Check = styled.div<{ border: Border; checked: boolean }>`
     border-width: 4px;
     border-left: none;
     border-top: none;
-    width: 12px;
-    height: 18px;
+    width: 8px;
+    height: 14px;
     position: absolute;
     transform: rotate(45deg);
     left: 8px;
