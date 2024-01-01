@@ -14,6 +14,8 @@
   "scripts": {
     "rollup": "rollup -c",
     "type-check": "tsc --noEmit",
+    "lint": "eslint --ext .ts,.tsx .",
+    "style-check": "prettier --check 'src/**/*.{tsx,ts}'",
     "publish": "rollup --bundleConfigAsCjs && npm publish --access public",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
