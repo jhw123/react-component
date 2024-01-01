@@ -14,7 +14,11 @@
   "scripts": {
     "rollup": "rollup -c",
     "type-check": "tsc --noEmit",
-    "publish": "rollup --bundleConfigAsCjs && npm publish --access public"
+    "lint": "eslint --ext .ts,.tsx .",
+    "style-check": "prettier --check 'src/**/*.{tsx,ts}'",
+    "publish": "rollup --bundleConfigAsCjs && npm publish --access public",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react-use": "^17.4.0"
@@ -27,14 +31,26 @@
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@rollup/plugin-typescript": "^11.1.5",
+    "@storybook/addon-essentials": "^7.6.6",
+    "@storybook/addon-interactions": "^7.6.6",
+    "@storybook/addon-links": "^7.6.6",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/blocks": "^7.6.6",
+    "@storybook/react": "^7.6.6",
+    "@storybook/react-webpack5": "^7.6.6",
+    "@storybook/test": "^7.6.6",
     "@types/react": "^18.2.22",
+    "@types/react-dom": "^18",
     "@typescript-eslint/parser": "^6.7.2",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-storybook": "^0.6.15",
     "prettier": "^2.8.7",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup": "^3.29.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "storybook": "^7.6.6",
     "ts-loader": "^9.3.0",
     "typescript": "^5.2.2"
   },

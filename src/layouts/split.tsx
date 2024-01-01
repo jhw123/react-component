@@ -14,7 +14,7 @@ interface Props {
   dragThreshold?: number
 }
 
-export const SplitView = View<Props>(
+export const SplitLayout = View<Props>(
   ({ children, initialSizes, direction = 'horizontal', barWidth = 12, dragThreshold = 5, ...props }) => {
     const containerRef = React.useRef<HTMLDivElement>(null)
     const childrenCnt = React.Children.count(children)
@@ -162,7 +162,7 @@ const Bar = styled.div<{ isOnDrag: boolean; direction: Direction; barWidth: numb
   ${({ isOnDrag, direction, barWidth }) => css`
     width: ${direction === 'horizontal' ? barWidth + 'px' : '100%'};
     height: ${direction === 'horizontal' ? '100%' : barWidth + 'px'};
-    ${isOnDrag ? Fill.Focus : Fill.Primary}
+    ${isOnDrag ? Fill.Focus : Fill.Secondary}
     cursor: ${direction === 'horizontal' ? 'col-resize' : 'row-resize'};
     ${isOnDrag ? Color.Focus : Color.Secondary}
     position: relative;

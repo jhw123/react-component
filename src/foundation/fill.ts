@@ -9,7 +9,7 @@ export const Fill = {
     }
   `,
   Secondary: css`
-    background-color: ${BaseColor.Gray000};
+    background-color: ${BaseColor.Gray010};
     @media (prefers-color-scheme: dark) {
       background-color: ${BaseColor.Gray070};
     }
@@ -20,11 +20,8 @@ export const Fill = {
   Danger: css`
     background-color: ${BaseColor.Red};
   `,
-  Inactive: css`
-    background-color: ${BaseColor.Gray005};
-    @media (prefers-color-scheme: dark) {
-      background-color: ${BaseColor.Gray070};
-    }
+  Warning: css`
+    background-color: ${BaseColor.Orange};
   `,
   Focus: css`
     background-color: ${BaseColor.Blue020};

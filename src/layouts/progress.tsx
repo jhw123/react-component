@@ -9,7 +9,7 @@ interface Props {
   stage: number
 }
 
-export const ProgressBar = View<Props>(({ children, stage, ...props }) => {
+export const ProgressLayout = View<Props>(({ children, stage, ...props }) => {
   return (
     <Container {...props}>
       {Children.map(children, (child, i) => {
@@ -67,13 +67,13 @@ const Status = styled.div<{ status: 'Complete' | 'InProgress' }>`
 
     ::after {
       content: '';
-      ${Border.Focus}
+      border: white 1px solid;
       width: 12px;
       height: 6px;
       border-width: 0 0 2px 2px;
       position: absolute;
-      top: 0;
-      left: 1px;
+      top: 2px;
+      left: 2px;
       transform: translate(3px, 4px) rotate(-45deg);
       display: ${status === 'Complete' ? 'block' : 'none'};
     }

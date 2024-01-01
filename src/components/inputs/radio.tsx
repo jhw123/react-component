@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
 import { useCallback, useId } from 'react'
-import { Fill, Border, View, ComponentState } from '../../foundation'
+import { Fill, Border, View, ComponentState, Font } from '../../foundation'
 
 interface Props {
   children?: React.ReactNode
@@ -20,9 +20,9 @@ export const RadioInput = View(({ state = 'Default', children, onCheck, fill = '
 
   return (
     <Container {...props}>
-      <RadioCircle id={id} fill={state === 'Checked' ? fill : 'Primary'} type="radio" onClick={onClick} />
+      <RadioCircle id={id} border={fill} type="radio" onClick={onClick} disabled={state === 'Disabled'} />
       <Label htmlFor={id}>{children}</Label>
-      {state === 'Checked' && <Check />}
+      {state === 'Checked' && <Check fill={fill} />}
     </Container>
   )
 })
@@ -36,33 +36,41 @@ const Container = styled.div`
   user-select: none;
 `
 
-const RadioCircle = styled.input<{ fill: Fill }>`
-  ${({ fill }) => css`
+const RadioCircle = styled.input<{ border: Border }>`
+  ${({ border }) => css`
     padding-right: 16px;
     border-radius: 50%;
-    height: 24px;
-    width: 24px;
-    ${Fill[fill]}
+    height: 28px;
+    width: 28px;
     appearance: none;
     margin: 0 8px 0 0;
     cursor: pointer;
-    ${fill === 'Primary' && Border.Secondary}
+    ${Border[border]}
     flex-shrink: 0;
+
+    &:disabled {
+      cursor: not-allowed;
+      filter: grayscale(1);
+    }
   `}
 `
 
 const Label = styled.label`
   cursor: pointer;
+  ${Font.Body}
+  margin-top: 3px;
 `
 
-const Check = styled.div`
-  ${Fill.Primary}
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  pointer-events: none;
-  border-radius: 50%;
-  transform: translate(50%, 50%);
+const Check = styled.div<{ fill: Fill }>`
+  ${({ fill }) => css`
+    ${Fill[fill]}
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(50%, 50%);
+  `}
 `

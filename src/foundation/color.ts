@@ -26,9 +26,9 @@ export const Color = {
     color: ${BaseColor.Red};
     fill: ${BaseColor.Red};
   `,
-  Inactive: css`
-    color: ${BaseColor.Gray020};
-    fill: ${BaseColor.Gray020};
+  Warning: css`
+    color: ${BaseColor.Orange};
+    fill: ${BaseColor.Orange};
   `,
   Focus: css`
     color: ${BaseColor.Blue040};

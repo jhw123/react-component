@@ -5,7 +5,7 @@ import { Border, Color, ComponentState, Fill, Font, View } from '../../foundatio
 
 interface Props {
   value: string
-  state?: ComponentState
+  state?: Exclude<ComponentState, 'Checked'>
   placeholder?: string
   rows?: number
   readonly?: boolean
@@ -72,6 +72,6 @@ const Container = styled.textarea`
 
   &:disabled {
     cursor: not-allowed;
-    filter: grayscale(0.8);
+    filter: grayscale(1);
   }
 `

@@ -10,7 +10,7 @@ interface Props {
   initialStates?: boolean[]
 }
 
-export const Accordion = View<Props>(({ children, titles, initialStates = [], ...props }) => {
+export const AccordionLayout = View<Props>(({ children, titles, initialStates = [], ...props }) => {
   const [show, setShow] = useState<boolean[]>(React.Children.map(children, (_, i) => initialStates[i] ?? false) ?? [])
 
   const toggle = useCallback(
@@ -51,6 +51,7 @@ const Title = styled.div`
   justify-content: space-between;
   font-weight: bold;
   width: 100%;
+  gap: 16px;
   ${Font.SubTitle}
 `
 
