@@ -13,7 +13,7 @@ export const Divider = View<Props>(({ fill = 'Secondary', ...props }) => {
 
 const Container = styled.div<{ fill: Fill }>`
   ${({ fill }) => css`
-    height: 1px;
+    height: 2px;
     width: auto;
     ${Fill[fill]}
   `}
