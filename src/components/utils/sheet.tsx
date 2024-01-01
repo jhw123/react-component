@@ -1,0 +1,52 @@
+import styled from '@emotion/styled'
+import { css } from '@emotion/react'
+import React from 'react'
+import { Fill, View, Elevation } from '../../foundation'
+
+interface Props {
+  fill?: Fill
+  padding?: number
+  paddingLeft?: number
+  paddingRight?: number
+  paddingTop?: number
+  paddingBottom?: number
+  paddingHorizonal?: number
+  paddingVertical?: number
+  children?: React.ReactNode
+}
+
+export const Sheet = View<Props>(
+  ({
+    fill = 'Secondary',
+    padding,
+    paddingBottom,
+    paddingTop,
+    paddingLeft,
+    paddingRight,
+    paddingHorizonal,
+    paddingVertical,
+    children,
+    ...props
+  }) => {
+    const style = {
+      paddingLeft: paddingLeft ?? paddingHorizonal ?? padding,
+      paddingRight: paddingRight ?? paddingHorizonal ?? padding,
+      paddingTop: paddingTop ?? paddingVertical ?? padding,
+      paddingBottom: paddingBottom ?? paddingVertical ?? padding,
+    }
+
+    return (
+      <Container {...props} fill={fill} style={style}>
+        {children}
+      </Container>
+    )
+  }
+)
+
+const Container = styled.div<{ fill: Fill }>`
+  ${({ fill }) => css`
+    ${Elevation.L1}
+    width: auto;
+    ${Fill[fill]}
+  `}
+`
