@@ -3,22 +3,22 @@ import { BaseColor } from './base'
 
 export const Border = {
   Primary: css`
-    border: 1px solid ${BaseColor.Gray050};
+    border: 2px solid ${BaseColor.Gray050};
   `,
   Secondary: css`
-    border: 1px solid ${BaseColor.Gray030};
+    border: 2px solid ${BaseColor.Gray030};
   `,
   Success: css`
-    border: 1px solid ${BaseColor.Green};
+    border: 2px solid ${BaseColor.Green};
   `,
   Danger: css`
-    border: 1px solid ${BaseColor.Red};
+    border: 2px solid ${BaseColor.Red};
   `,
   Warning: css`
-    border: 1px solid ${BaseColor.Orange};
+    border: 2px solid ${BaseColor.Orange};
   `,
   Focus: css`
-    border: 1px solid ${BaseColor.Blue030};
+    border: 2px solid ${BaseColor.Blue030};
   `,
 } as const
 
