@@ -34,15 +34,17 @@ export const TextInput = View<Props>(
 
     return (
       <Container {...props} rows={maxRows}>
-        <HeightResizer>{value + '\n'}</HeightResizer>
-        <InputBox
-          onChange={onWrite}
-          value={value}
-          disabled={state === 'Disabled'}
-          placeholder={placeholder}
-          readOnly={readonly}
-          onKeyUp={onKeyDown}
-        />
+        <Wrapper>
+          <HeightResizer>{value + '\n'}</HeightResizer>
+          <InputBox
+            onChange={onWrite}
+            value={value}
+            disabled={state === 'Disabled'}
+            placeholder={placeholder}
+            readOnly={readonly}
+            onKeyUp={onKeyDown}
+          />
+        </Wrapper>
       </Container>
     )
   }
@@ -50,13 +52,12 @@ export const TextInput = View<Props>(
 
 const Container = styled.div<{ rows: number }>`
   ${({ rows }) => css`
-    position: relative;
-    width: 100%;
+    width: calc(100% - 18px);
     border-radius: 8px;
     ${Border.Secondary}
     padding: 8px;
     height: fit-content;
-    box-sizing: border-box;
+    box-sizing: content-box;
     ${0 < rows &&
     css`
       max-height: ${rows * 1.4}rem;
@@ -70,19 +71,22 @@ const Container = styled.div<{ rows: number }>`
   `}
 `
 
+const Wrapper = styled.div`
+  position: relative;
+`
+
 const InputBox = styled.textarea`
-  width: calc(100% - 16px);
-  resize: vertical;
+  width: 100%;
   box-sizing: border-box;
   font-family: inherit;
   ${Font.Body}
   outline: none;
   position: absolute;
-  height: calc(100% - 16px);
+  height: 100%;
   resize: none;
   overflow: hidden;
-  top: 8px;
-  left: 8px;
+  top: 0;
+  left: 0;
   word-break: break-all;
 
   ::placeholder {
