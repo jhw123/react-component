@@ -2,18 +2,18 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
-import { Fill, View, Font, ComponentState } from '../../foundation'
+import { Fill, View, Font } from '../../foundation'
 
 interface Props {
-  state?: ComponentState
+  disabled?: boolean
   children: React.ReactNode
   onClick?: () => void
   fill: Fill
 }
 
-export const FillButton = View<Props>(({ children, fill, onClick, state = 'Default', ...props }) => {
+export const FillButton = View<Props>(({ children, fill, onClick, disabled = false, ...props }) => {
   return (
-    <Container {...props} fill={fill} onClick={onClick} disabled={state === 'Disabled'}>
+    <Container {...props} fill={fill} onClick={onClick} disabled={disabled}>
       {children}
     </Container>
   )

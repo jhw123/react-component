@@ -1,11 +1,11 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
-import { Border, Color, ComponentState, Font, View } from '../../foundation'
+import { Border, Color, Font, View } from '../../foundation'
 
 interface Props {
   value: string
-  state?: Exclude<ComponentState, 'Checked'>
+  disabled?: boolean
   placeholder?: string
   maxRows?: number
   readonly?: boolean
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const TextInput = View<Props>(
-  ({ value, onChange, state = 'Default', placeholder, maxRows = 0, readonly = false, onEnter, ...props }) => {
+  ({ value, onChange, disabled = false, placeholder, maxRows = 0, readonly = false, onEnter, ...props }) => {
     const onWrite = useCallback(
       (e: ChangeEvent<HTMLTextAreaElement>) => {
         onChange?.(e.target.value)
@@ -39,7 +39,7 @@ export const TextInput = View<Props>(
           <InputBox
             onChange={onWrite}
             value={value}
-            disabled={state === 'Disabled'}
+            disabled={disabled}
             placeholder={placeholder}
             readOnly={readonly}
             onKeyUp={onKeyDown}

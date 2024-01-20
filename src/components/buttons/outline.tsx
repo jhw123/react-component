@@ -1,19 +1,19 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { Border, Color, ComponentState, Font, View } from '../../foundation'
+import { Border, Color, Font, View } from '../../foundation'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
 
 interface Props {
-  state?: ComponentState
+  disabled?: boolean
   children: React.ReactNode
   onClick?: () => void
   color?: Border & Color
 }
 
-export const OutlineButton = View<Props>(({ state = 'Default', children, color = 'Primary', onClick, ...props }) => {
+export const OutlineButton = View<Props>(({ disabled = false, children, color = 'Primary', onClick, ...props }) => {
   return (
-    <Container color={color} {...props} onClick={onClick} disabled={state === 'Disabled'}>
+    <Container color={color} {...props} onClick={onClick} disabled={disabled}>
       {children}
     </Container>
   )

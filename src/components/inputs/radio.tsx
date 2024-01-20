@@ -2,30 +2,33 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
 import { useCallback, useId } from 'react'
-import { Fill, Border, View, ComponentState, Font } from '../../foundation'
+import { Fill, Border, View, Font } from '../../foundation'
 
 interface Props {
   children?: React.ReactNode
-  state?: ComponentState
+  checked?: boolean
+  disabled?: boolean
   fill?: Fill & Border
-  onCheck?: (nextState: ComponentState) => void
+  onCheck?: (nextState: boolean) => void
 }
 
-export const RadioInput = View(({ state = 'Default', children, onCheck, fill = 'Focus', ...props }: Props) => {
-  const id = useId()
+export const RadioInput = View(
+  ({ checked = true, disabled = false, children, onCheck, fill = 'Focus', ...props }: Props) => {
+    const id = useId()
 
-  const onClick = useCallback(() => {
-    onCheck?.(state === 'Default' ? 'Checked' : 'Default')
-  }, [onCheck, state])
+    const onClick = useCallback(() => {
+      onCheck?.(!checked)
+    }, [onCheck, checked])
 
-  return (
-    <Container {...props}>
-      <RadioCircle id={id} border={fill} type="radio" onClick={onClick} disabled={state === 'Disabled'} />
-      <Label htmlFor={id}>{children}</Label>
-      {state === 'Checked' && <Check fill={fill} />}
-    </Container>
-  )
-})
+    return (
+      <Container {...props}>
+        <RadioCircle id={id} border={fill} type="radio" onClick={onClick} disabled={disabled} />
+        <Label htmlFor={id}>{children}</Label>
+        {checked && <Check fill={fill} />}
+      </Container>
+    )
+  }
+)
 
 const Container = styled.div`
   position: relative;

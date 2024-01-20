@@ -1,16 +1,16 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { ComponentState, View } from '../foundation'
+import { View } from '../foundation'
 
 interface Props {
-  state?: Extract<ComponentState, 'Default' | 'Checked'>
+  checked?: boolean
   children: React.ReactNode
 }
 
-export const Collapsible = View<Props>(({ children, state = 'Default', ...props }) => {
+export const Collapsible = View<Props>(({ children, checked = true, ...props }) => {
   return (
-    <Container {...props} collapsed={state !== 'Checked'}>
+    <Container {...props} collapsed={!checked}>
       {children}
     </Container>
   )

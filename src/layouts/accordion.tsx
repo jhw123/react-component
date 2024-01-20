@@ -34,7 +34,7 @@ export const AccordionLayout = View<Props>(({ children, titles, initialStates = 
               {show[i] ? <ArrowUp /> : <ArrowDown />}
             </Title>
           </TextButton>
-          <Collapsible state={show[i] ? 'Checked' : 'Default'}>
+          <Collapsible checked={!show[i]}>
             <Box>{child}</Box>
           </Collapsible>
 
