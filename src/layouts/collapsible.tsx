@@ -8,7 +8,7 @@ interface Props {
   children: React.ReactNode
 }
 
-export const Collapsible = View<Props>(({ children, checked = true, ...props }) => {
+export const CollapsibleLayout = View<Props>(({ children, checked = true, ...props }) => {
   return (
     <Container {...props} collapsed={!checked}>
       {children}
