@@ -1,15 +1,15 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { Border } from '../../foundation'
+import { Border, View } from '../../foundation'
 
 interface Props {
   border?: Border
 }
 
-export const CircleLoading = ({ border = 'Focus' }: Props) => {
-  return <Container border={border} />
-}
+export const CircleLoading = View<Props>(({ border = 'Focus', ...props }) => {
+  return <Container {...props} border={border} />
+})
 
 const spinning = keyframes`
   100%

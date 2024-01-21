@@ -1,15 +1,15 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { Fill, Color } from '../../foundation'
+import { Fill, Color, View } from '../../foundation'
 
 interface Props {
   fill?: Fill & Color
 }
 
-export const TextLoading = ({ fill = 'Focus' }: Props) => {
-  return <Container fill={fill} />
-}
+export const TextLoading = View<Props>(({ fill = 'Focus', ...props }) => {
+  return <Container {...props} fill={fill} />
+})
 
 const DOT_SIZE = 8
 
