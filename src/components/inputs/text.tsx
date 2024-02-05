@@ -1,11 +1,11 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
-import { Border, Color, ComponentState, Fill, Font, View } from '../../foundation'
-import { css } from '@emotion/react'
+import { Border, Color, Font, View } from '../../foundation'
 
 interface Props {
   value: string
-  state?: Exclude<ComponentState, 'Checked'>
+  disabled?: boolean
   placeholder?: string
   maxRows?: number
   readonly?: boolean
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const TextInput = View<Props>(
-  ({ value, onChange, state = 'Default', placeholder, maxRows = 0, readonly = false, onEnter, ...props }) => {
+  ({ value, onChange, disabled = false, placeholder, maxRows = 0, readonly = false, onEnter, ...props }) => {
     const onWrite = useCallback(
       (e: ChangeEvent<HTMLTextAreaElement>) => {
         onChange?.(e.target.value)
@@ -34,15 +34,17 @@ export const TextInput = View<Props>(
 
     return (
       <Container {...props} rows={maxRows}>
-        <HeightResizer>{value + '\n'}</HeightResizer>
-        <InputBox
-          onChange={onWrite}
-          value={value}
-          disabled={state === 'Disabled'}
-          placeholder={placeholder}
-          readOnly={readonly}
-          onKeyUp={onKeyDown}
-        />
+        <Wrapper>
+          <HeightResizer>{value + '\n'}</HeightResizer>
+          <InputBox
+            onChange={onWrite}
+            value={value}
+            disabled={disabled}
+            placeholder={placeholder}
+            readOnly={readonly}
+            onKeyUp={onKeyDown}
+          />
+        </Wrapper>
       </Container>
     )
   }
@@ -50,13 +52,12 @@ export const TextInput = View<Props>(
 
 const Container = styled.div<{ rows: number }>`
   ${({ rows }) => css`
-    position: relative;
-    width: 100%;
+    width: calc(100% - 18px);
     border-radius: 8px;
     ${Border.Secondary}
     padding: 8px;
-    ${Fill.Secondary}
     height: fit-content;
+    box-sizing: content-box;
     ${0 < rows &&
     css`
       max-height: ${rows * 1.4}rem;
@@ -70,19 +71,23 @@ const Container = styled.div<{ rows: number }>`
   `}
 `
 
+const Wrapper = styled.div`
+  position: relative;
+`
+
 const InputBox = styled.textarea`
-  width: calc(100% - 16px);
-  resize: vertical;
+  width: 100%;
   box-sizing: border-box;
   font-family: inherit;
   ${Font.Body}
   outline: none;
   position: absolute;
-  height: calc(100% - 16px);
+  height: 100%;
   resize: none;
   overflow: hidden;
-  top: 8px;
-  left: 8px;
+  top: 0;
+  left: 0;
+  word-break: break-all;
 
   ::placeholder {
     ${Color.Secondary}
@@ -98,4 +103,5 @@ const HeightResizer = styled.div`
   white-space: pre-line;
   ${Font.Body}
   opacity: 0;
+  word-break: break-all;
 `

@@ -9,7 +9,7 @@ export const Fill = {
     }
   `,
   Secondary: css`
-    background-color: ${BaseColor.Gray010};
+    background-color: ${BaseColor.Gray000};
     @media (prefers-color-scheme: dark) {
       background-color: ${BaseColor.Gray070};
     }

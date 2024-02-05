@@ -1,11 +1,11 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
+import { Color, Font, View } from '../../foundation'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
-import { Color, ComponentState, Font, View } from '../../foundation'
 
 interface Props {
-  state?: ComponentState
+  disabled?: boolean
   children: React.ReactNode
   color?: Color
   font?: Font
@@ -13,9 +13,9 @@ interface Props {
 }
 
 export const TextButton = View<Props>(
-  ({ children, color = 'Secondary', font = 'Caption', onClick, state = 'Default', ...props }) => {
+  ({ children, color = 'Secondary', font = 'Caption', onClick, disabled = false, ...props }) => {
     return (
-      <Container {...props} color={color} font={font} onClick={onClick} disabled={state === 'Disabled'}>
+      <Container {...props} color={color} font={font} onClick={onClick} disabled={disabled}>
         {children}
       </Container>
     )

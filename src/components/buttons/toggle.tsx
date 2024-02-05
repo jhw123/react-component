@@ -2,10 +2,10 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { useCallback } from 'react'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
-import { Fill, Color, View, Font, ComponentState, Border } from '../../foundation'
+import { Fill, Color, View, Font, Border } from '../../foundation'
 
 interface Props {
-  state?: Exclude<ComponentState, 'Checked'>
+  disabled?: boolean
   onClick?: (next: boolean) => void
   left: string
   right: string
@@ -13,25 +13,23 @@ interface Props {
   fill: Exclude<Fill & Color & Border, 'Primary'>
 }
 
-export const ToggleButton = View<Props>(
-  ({ left, right, fill, onClick, isLeft = true, state = 'Default', ...props }) => {
-    const onToggle = useCallback(() => {
-      onClick?.(!isLeft)
-    }, [isLeft, onClick])
+export const ToggleButton = View<Props>(({ left, right, fill, onClick, isLeft = true, disabled = false, ...props }) => {
+  const onToggle = useCallback(() => {
+    onClick?.(!isLeft)
+  }, [isLeft, onClick])
 
-    return (
-      <Container {...props} border={fill} onClick={onToggle} disabled={state === 'Disabled'}>
-        <Toggle fill={fill} isLeft={isLeft} />
-        <Label active={isLeft} color={fill}>
-          {left}
-        </Label>
-        <Label active={!isLeft} color={fill}>
-          {right}
-        </Label>
-      </Container>
-    )
-  }
-)
+  return (
+    <Container {...props} border={fill} onClick={onToggle} disabled={disabled}>
+      <Toggle fill={fill} isLeft={isLeft} />
+      <Label active={isLeft} color={fill}>
+        {left}
+      </Label>
+      <Label active={!isLeft} color={fill}>
+        {right}
+      </Label>
+    </Container>
+  )
+})
 
 const Container = styled.button<{ border: Border }>`
   ${({ border }) => css`
