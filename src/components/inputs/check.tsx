@@ -1,31 +1,33 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React from 'react'
-import { useCallback, useId } from 'react'
-import { Border, ComponentState, Font, View } from '../../foundation'
+import React, { useCallback, useId } from 'react'
+import { Border, Font, View } from '../../foundation'
 
 interface Props {
   children?: React.ReactNode
-  state?: ComponentState
+  disabled?: boolean
+  checked?: boolean
   checkColor?: Exclude<Border, 'Secondary'>
-  onCheck?: (nextState: ComponentState) => void
+  onCheck?: (nextState: boolean) => void
 }
 
-export const CheckInput = View(({ state = 'Default', children, onCheck, checkColor = 'Focus', ...props }: Props) => {
-  const id = useId()
+export const CheckInput = View(
+  ({ disabled = false, checked = true, children, onCheck, checkColor = 'Focus', ...props }: Props) => {
+    const id = useId()
 
-  const onClick = useCallback(() => {
-    onCheck?.(state === 'Default' ? 'Checked' : 'Default')
-  }, [onCheck, state])
+    const onClick = useCallback(() => {
+      onCheck?.(!checked)
+    }, [onCheck, checked])
 
-  return (
-    <Container {...props}>
-      <Checkbox id={id} type="checkbox" border={checkColor} onClick={onClick} disabled={state === 'Disabled'} />
-      <Label htmlFor={id}>{children}</Label>
-      <Check border={checkColor} checked={state === 'Checked'} />
-    </Container>
-  )
-})
+    return (
+      <Container {...props}>
+        <Checkbox id={id} type="checkbox" border={checkColor} onClick={onClick} disabled={disabled} />
+        <Label htmlFor={id}>{children}</Label>
+        <Check border={checkColor} checked={checked} />
+      </Container>
+    )
+  }
+)
 
 const Container = styled.div`
   position: relative;

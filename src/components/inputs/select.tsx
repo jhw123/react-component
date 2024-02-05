@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React, { ChangeEvent, useCallback } from 'react'
+import { Border, View } from '../../foundation'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
-import { Border, Fill, View } from '../../foundation'
 
 interface Props {
   options: Readonly<string[]>

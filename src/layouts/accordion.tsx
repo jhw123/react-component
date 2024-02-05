@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React, { useCallback, useState } from 'react'
-import { Collapsible } from './collapsible'
+import { CollapsibleLayout } from './collapsible'
 import { Divider, TextButton } from '../components'
 import { View, Font, Border } from '../foundation'
 
@@ -34,9 +34,9 @@ export const AccordionLayout = View<Props>(({ children, titles, initialStates = 
               {show[i] ? <ArrowUp /> : <ArrowDown />}
             </Title>
           </TextButton>
-          <Collapsible state={show[i] ? 'Checked' : 'Default'}>
+          <CollapsibleLayout checked={!show[i]}>
             <Box>{child}</Box>
-          </Collapsible>
+          </CollapsibleLayout>
 
           <Divider fill="Secondary" />
         </Row>
