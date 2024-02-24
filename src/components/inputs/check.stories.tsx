@@ -1,8 +1,9 @@
-import { Global } from '@emotion/react'
+import { Global, ThemeProvider } from '@emotion/react'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { CheckInput } from '..'
 import { ResetStyle } from '../../foundation'
+import { DEFAULT_THEME } from '../../themes'
 
 const meta = {
   title: 'Component/Input/Check',
@@ -16,7 +17,9 @@ const meta = {
     Story => (
       <>
         <Global styles={ResetStyle} />
-        <Story />
+        <ThemeProvider theme={DEFAULT_THEME}>
+          <Story />
+        </ThemeProvider>
       </>
     ),
   ],

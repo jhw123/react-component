@@ -2,7 +2,8 @@ import { Global } from '@emotion/react'
 import styled from '@emotion/styled'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { Elevation, LinearLayout, ResetStyle } from '..'
+import { LinearLayout, ResetStyle } from '..'
+import { Elevation } from '../themes/default/elevation'
 
 const meta = {
   title: 'Layout/Linear',

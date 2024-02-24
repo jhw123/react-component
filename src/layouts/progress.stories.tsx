@@ -1,8 +1,9 @@
-import { Global } from '@emotion/react'
+import { Global, ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { Elevation, ProgressLayout, ResetStyle } from '..'
+import { DEFAULT_THEME, ProgressLayout, ResetStyle } from '..'
+import { Elevation } from '../themes/default/elevation'
 
 const meta = {
   title: 'Layout/Progress',
@@ -16,9 +17,11 @@ const meta = {
     Story => (
       <>
         <Global styles={ResetStyle} />
-        <Window>
-          <Story />
-        </Window>
+        <ThemeProvider theme={DEFAULT_THEME}>
+          <Window>
+            <Story />
+          </Window>
+        </ThemeProvider>
       </>
     ),
   ],
