@@ -1,9 +1,11 @@
-import { Global } from '@emotion/react'
+import { Global, ThemeProvider } from '@emotion/react'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Divider } from '..'
-import { Elevation, ResetStyle } from '../../foundation'
+import { ResetStyle } from '../../foundation'
 import styled from '@emotion/styled'
+import { DEFAULT_THEME } from '../../themes'
+import { Elevation } from '../../themes/default/elevation'
 
 const Window = styled.div`
   width: 500px;
@@ -22,11 +24,13 @@ const meta = {
     Story => (
       <>
         <Global styles={ResetStyle} />
-        <Window>
-          Section 1
-          <Story />
-          Section 2
-        </Window>
+        <ThemeProvider theme={DEFAULT_THEME}>
+          <Window>
+            Section 1
+            <Story />
+            Section 2
+          </Window>
+        </ThemeProvider>
       </>
     ),
   ],

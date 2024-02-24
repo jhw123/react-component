@@ -1,10 +1,11 @@
-import { Global } from '@emotion/react'
+import { Global, ThemeProvider } from '@emotion/react'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { TextInput } from '..'
 import { ResetStyle } from '../../foundation'
 import styled from '@emotion/styled'
 import { Elevation } from '../../themes/default/elevation'
+import { DEFAULT_THEME } from '../../themes'
 
 const Window = styled.div`
   width: 500px;
@@ -21,10 +22,14 @@ const meta = {
   argTypes: {},
   decorators: [
     Story => (
-      <Window>
+      <>
         <Global styles={ResetStyle} />
-        <Story />
-      </Window>
+        <ThemeProvider theme={DEFAULT_THEME}>
+          <Window>
+            <Story />
+          </Window>
+        </ThemeProvider>
+      </>
     ),
   ],
 } satisfies Meta<typeof TextInput>

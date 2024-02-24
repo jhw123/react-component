@@ -1,7 +1,7 @@
-import { Global } from '@emotion/react'
+import { Global, ThemeProvider } from '@emotion/react'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { AccordionLayout, ResetStyle } from '..'
+import { AccordionLayout, DEFAULT_THEME, ResetStyle } from '..'
 
 const meta = {
   title: 'Layout/Accordion',
@@ -15,7 +15,9 @@ const meta = {
     Story => (
       <>
         <Global styles={ResetStyle} />
-        <Story />
+        <ThemeProvider theme={DEFAULT_THEME}>
+          <Story />
+        </ThemeProvider>
       </>
     ),
   ],

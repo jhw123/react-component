@@ -1,8 +1,9 @@
-import { Global } from '@emotion/react'
+import { Global, ThemeProvider } from '@emotion/react'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { Elevation, ResetStyle, SplitLayout } from '..'
+import { DEFAULT_THEME, ResetStyle, SplitLayout } from '..'
 import styled from '@emotion/styled'
+import { Elevation } from '../themes/default/elevation'
 
 const meta = {
   title: 'Layout/Split',
@@ -16,9 +17,11 @@ const meta = {
     Story => (
       <>
         <Global styles={ResetStyle} />
-        <Window>
-          <Story />
-        </Window>
+        <ThemeProvider theme={DEFAULT_THEME}>
+          <Window>
+            <Story />
+          </Window>
+        </ThemeProvider>
       </>
     ),
   ],
