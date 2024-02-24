@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import React from 'react'
-import { Fill, View, Elevation } from '../../foundation'
+import { View } from '../../foundation'
+import { Fill } from '../../themes/default/fill'
 
 interface Props {
   fill?: Fill
@@ -45,8 +46,8 @@ export const Sheet = View<Props>(
 )
 
 const Container = styled.div<{ fill: Fill }>`
-  ${({ fill }) => css`
-    ${Elevation.L1}
+  ${({ theme, fill }) => css`
+    ${theme.elevation.L1}
     width: auto;
     ${Fill[fill]}
   `}

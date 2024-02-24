@@ -2,7 +2,7 @@ import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { Font, ResetStyle } from '.'
+import { Font, ResetStyle } from '../..'
 
 const PaletteComponent = () => {
   return (
@@ -28,7 +28,7 @@ const Component = styled.div<{ font: Font }>`
 `
 
 const meta = {
-  title: 'Foundation/Font',
+  title: 'Theme/Default/Font',
   component: PaletteComponent,
   parameters: {
     layout: 'centered',

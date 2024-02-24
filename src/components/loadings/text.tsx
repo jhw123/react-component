@@ -1,7 +1,9 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { Fill, Color, View } from '../../foundation'
+import { View } from '../../foundation'
+import { Fill } from '../../themes/default/fill'
+import { Color } from '../../themes/default/color'
 
 interface Props {
   fill?: Fill & Color
@@ -24,14 +26,14 @@ const dotFlashing = keyframes`
 `
 
 const Container = styled.div<{ fill: Fill & Color }>`
-  ${({ fill }) => css`
+  ${({ theme, fill }) => css`
     position: relative;
     width: ${DOT_SIZE}px;
     height: ${DOT_SIZE}px;
     border-radius: 5px;
     display: inline-block;
-    ${Fill[fill]}
-    ${Color[fill]}
+    ${theme.fill[fill]}
+    ${theme.color[fill]}
     animation: ${dotFlashing} 0.8s infinite linear alternate;
     animation-delay: 0.4s;
     margin-left: ${DOT_SIZE + 4}px;
@@ -49,8 +51,8 @@ const Container = styled.div<{ fill: Fill & Color }>`
       width: ${DOT_SIZE}px;
       height: ${DOT_SIZE}px;
       border-radius: 5px;
-      ${Fill[fill]}
-      ${Color[fill]}
+      ${theme.fill[fill]}
+      ${theme.color[fill]}
       animation: ${dotFlashing} 0.8s infinite alternate;
       animation-delay: 0s;
     }
@@ -59,8 +61,8 @@ const Container = styled.div<{ fill: Fill & Color }>`
       width: ${DOT_SIZE}px;
       height: ${DOT_SIZE}px;
       border-radius: 5px;
-      ${Fill[fill]}
-      ${Color[fill]}
+      ${theme.fill[fill]}
+      ${theme.color[fill]}
       animation: ${dotFlashing} 0.8s infinite alternate;
       animation-delay: 0.8s;
     }

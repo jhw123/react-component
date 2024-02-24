@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
 import { Children } from 'react'
-import { View, Border, Fill, Color } from '../foundation'
+import { View } from '../foundation'
 
 interface Props {
   children?: React.ReactNode
@@ -39,28 +39,30 @@ const Header = styled.div`
 `
 
 const Stage = styled.div`
-  &:not(:last-of-type) {
-    padding-bottom: 16px;
-    ${Border.Focus}
-    border-width: 0;
-    border-left-width: 2px;
-  }
-  &:last-of-type {
-    margin-left: 2px;
-  }
+  ${({ theme }) => css`
+    &:not(:last-of-type) {
+      padding-bottom: 16px;
+      ${theme.border.Focus}
+      border-width: 0;
+      border-left-width: 2px;
+    }
+    &:last-of-type {
+      margin-left: 2px;
+    }
+  `}
 `
 
 const Status = styled.div<{ status: 'Complete' | 'InProgress' }>`
-  ${({ status }) => css`
+  ${({ theme, status }) => css`
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    ${Border.Focus}
-    ${status === 'Complete' ? Fill.Focus : Fill.Primary}
+    ${theme.border.Focus}
+    ${status === 'Complete' ? theme.fill.Focus : theme.fill.Primary}
     display: flex;
     justify-content: center;
     align-items: center;
-    ${Color.Focus}
+    ${theme.color.Focus}
     ${status === 'Complete' && 'font-size: 0;'}
     line-height: normal;
     transform: translateX(-13px);
