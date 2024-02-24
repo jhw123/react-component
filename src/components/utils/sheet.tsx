@@ -26,17 +26,18 @@ export const Sheet = View<Props>(
     paddingHorizonal,
     paddingVertical,
     children,
+    style,
     ...props
   }) => {
-    const style = {
+    const styleWithPadding = Object.assign(style, {
       paddingLeft: paddingLeft ?? paddingHorizonal ?? padding,
       paddingRight: paddingRight ?? paddingHorizonal ?? padding,
       paddingTop: paddingTop ?? paddingVertical ?? padding,
       paddingBottom: paddingBottom ?? paddingVertical ?? padding,
-    }
+    })
 
     return (
-      <Container {...props} fill={fill} style={style}>
+      <Container {...props} fill={fill} style={styleWithPadding}>
         {children}
       </Container>
     )
