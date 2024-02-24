@@ -2,7 +2,8 @@ import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { Font, ResetStyle } from '../..'
+import { ResetStyle } from '../..'
+import { Font } from './font'
 
 const PaletteComponent = () => {
   return (
