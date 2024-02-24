@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { MouseEvent, TouchEvent, useCallback, useEffect } from 'react'
 import { useWindowSize } from 'react-use'
-import { View, Fill, Color } from '../foundation'
+import { View } from '../foundation'
 
 type Direction = 'horizontal' | 'vertical'
 
@@ -159,17 +159,17 @@ const ChildView = styled.div`
 `
 
 const Bar = styled.div<{ isOnDrag: boolean; direction: Direction; barWidth: number }>`
-  ${({ isOnDrag, direction, barWidth }) => css`
+  ${({ theme, isOnDrag, direction, barWidth }) => css`
     width: ${direction === 'horizontal' ? barWidth + 'px' : '100%'};
     height: ${direction === 'horizontal' ? '100%' : barWidth + 'px'};
-    ${isOnDrag ? Fill.Focus : Fill.Secondary}
+    ${isOnDrag ? theme.fill.Focus : theme.fill.Secondary}
     cursor: ${direction === 'horizontal' ? 'col-resize' : 'row-resize'};
-    ${isOnDrag ? Color.Focus : Color.Secondary}
+    ${isOnDrag ? theme.color.Focus : theme.color.Secondary}
     position: relative;
 
     &:hover {
-      ${Fill.Focus}
-      ${Color.Focus}
+      ${theme.fill.Focus}
+      ${theme.color.Focus}
     }
 
     &::after {

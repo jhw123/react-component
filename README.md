@@ -35,23 +35,6 @@ function App() {
 }
 ```
 
-## Semantic Styling
-
-You can use predefined semantic styles from the library as follows. Check out the foundation tab in the storybook to check the list of our semantic styles.
-
-```tsx
-import { Border, Color, Elevation, Fill, Font } from '@wookiejin/react-component'
-
-const Component = styled.button`
-  ${Border.Primary}
-  ${Color.Secondary}
-  ${Elevation.L2}
-  ${Fill.Focus}
-  ${Font.Title}
-  border-radius: 4px;
-`
-```
-
 ## View
 
 The library provides a higher-order component `View` for layout building. You can wrap your custom component with `View` to inherit parameters for margins. You should pass the remaining `props` to the outermost component.
@@ -78,8 +61,11 @@ function App() {
 
 ## Components & Layouts
 
+The components are styled by [Emotion theme context API](https://emotion.sh/docs/theming). You should wrap the components from this library with `ThemeProvider` from Emotion and inject a theme object predefined in this library.
+
 ```tsx
-import { Fill, FillButton } from '@wookiejin/react-component'
+import { ThemeProvider } from '@emotion/react'
+import { Fill, FillButton, DEFAULT_THEME } from '@wookiejin/react-component'
 
 function App() {
   const onClick = () => {
@@ -87,12 +73,41 @@ function App() {
   }
 
   return (
-    <div>
+    <ThemeProvider theme={DEFAULT_THEME}>
       <HeaderText marginBottom={4}>Header<HeaderText>
       <FillButton fill="Secondary" onClick={onClick}>
         Click Me
       </FillButton>
-    </div>
+    </ThemeProvider>
   )
+}
+```
+
+## Themes
+
+The library provides a list of predefined themes. You can also define your theme. Refer to the theme files in `/src/themes/` on the GitHub page.
+
+```ts
+import { css } from '@emotion/react'
+
+export const CUSTOM_THEME = {
+  font: {
+    Title: css`
+      font-size: 2rem;
+    `,
+    SubTitle: css`
+      font-size: 1.3rem;
+    `,
+    SubSubTitle: css`
+      font-size: 1.1rem;
+    `,
+    Body: css`
+      font-size: 1rem;
+    `,
+    Caption: css`
+      font-size: 0.8rem;
+    `,
+  },
+  ...
 }
 ```

@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import React, { ChangeEvent, useCallback } from 'react'
-import { Border, View } from '../../foundation'
+import { View } from '../../foundation'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
+import { css } from '@emotion/react'
 
 interface Props {
   options: Readonly<string[]>
@@ -35,17 +36,19 @@ const Container = styled.div`
 `
 
 const Options = styled.select`
-  padding: 4px;
-  padding-right: 16px;
-  border-radius: 8px;
-  height: ${MIN_BUTTON_SIZE}px;
-  cursor: pointer;
-  ${Border.Secondary}
-  outline: none;
-  width: 100%;
-  font-size: inherit;
-  text-align: center;
-  appearance: none;
+  ${({ theme }) => css`
+    padding: 4px;
+    padding-right: 16px;
+    border-radius: 8px;
+    height: ${MIN_BUTTON_SIZE}px;
+    cursor: pointer;
+    ${theme.border.Secondary}
+    outline: none;
+    width: 100%;
+    font-size: inherit;
+    text-align: center;
+    appearance: none;
+  `}
 `
 
 const ArrowDown = styled.div`

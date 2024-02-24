@@ -1,8 +1,10 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { Color, Font, View } from '../../foundation'
+import { View } from '../../foundation'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
+import { Color } from '../../themes/default/color'
+import { Font } from '../../themes/default/font'
 
 interface Props {
   disabled?: boolean
@@ -23,10 +25,10 @@ export const TextButton = View<Props>(
 )
 
 const Container = styled.button<{ color: Color; font: Font }>`
-  ${({ color, font }) => css`
-    ${Font[font]}
+  ${({ color, font, theme }) => css`
+    ${theme.font[font]}
     min-height: ${MIN_BUTTON_SIZE}px;
-    ${Color[color]}
+    ${theme.color[color]}
     border-radius: 8px;
     cursor: pointer;
     padding: 4px 8px;

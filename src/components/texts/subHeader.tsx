@@ -1,7 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { Color, View, Font } from '../../foundation'
+import { View } from '../../foundation'
+import { Color } from '../../themes/default/color'
 
 type Align = 'left' | 'center' | 'right'
 
@@ -20,9 +21,9 @@ export const SubHeaderText = View<Props>(({ color = 'Primary', children, align =
 })
 
 const Container = styled.div<{ color: Color; align: Align }>`
-  ${({ color, align }) => css`
-    ${Font.SubTitle}
-    ${Color[color]}
+  ${({ theme, color, align }) => css`
+    ${theme.font.SubTitle}
+    ${theme.color[color]}
     text-align: ${align};
     white-space: pre-wrap;
     height: min-content;

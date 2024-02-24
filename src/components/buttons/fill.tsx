@@ -1,8 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
+import { View } from '../../foundation'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
-import { Fill, View, Font } from '../../foundation'
+import { Fill } from '../../themes/default/fill'
 
 interface Props {
   disabled?: boolean
@@ -20,11 +21,11 @@ export const FillButton = View<Props>(({ children, fill, onClick, disabled = fal
 })
 
 const Container = styled.button<{ fill: Fill }>`
-  ${({ fill }) => css`
-    ${Font.Body}
+  ${({ fill, theme }) => css`
+    ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
     color: white;
-    ${Fill[fill]}
+    ${theme.fill[fill]}
     border-radius: 8px;
     cursor: pointer;
     padding: 4px 8px;

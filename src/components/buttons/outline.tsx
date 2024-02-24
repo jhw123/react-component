@@ -1,8 +1,10 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { Border, Color, Font, View } from '../../foundation'
+import { View } from '../../foundation'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
+import { Border } from '../../themes/default/border'
+import { Color } from '../../themes/default/color'
 
 interface Props {
   disabled?: boolean
@@ -20,12 +22,12 @@ export const OutlineButton = View<Props>(({ disabled = false, children, color = 
 })
 
 const Container = styled.button<{ color: Border & Color }>`
-  ${({ color }) => css`
-    ${Font.Body}
+  ${({ color, theme }) => css`
+    ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
     border-radius: 8px;
-    ${Border[color]}
-    ${Color[color]}
+    ${theme.border[color]}
+    ${theme.color[color]}
     cursor: pointer;
     padding: 4px 8px;
     width: 100%;
