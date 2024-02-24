@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import React from 'react'
-import { Fill, View } from '../../foundation'
+import { View } from '../../foundation'
+import { Fill } from '../../themes/default/fill'
 
 interface Props {
   fill?: Fill
@@ -12,9 +13,9 @@ export const Divider = View<Props>(({ fill = 'Secondary', ...props }) => {
 })
 
 const Container = styled.div<{ fill: Fill }>`
-  ${({ fill }) => css`
+  ${({ theme, fill }) => css`
     height: 2px;
     width: auto;
-    ${Fill[fill]}
+    ${theme.fill[fill]}
   `}
 `

@@ -1,7 +1,8 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { useCallback, useId } from 'react'
-import { Border, Font, View } from '../../foundation'
+import { Border } from '../../themes/default/border'
+import { View } from '../..'
 
 interface Props {
   children?: React.ReactNode
@@ -39,13 +40,13 @@ const Container = styled.div`
 `
 
 const Checkbox = styled.input<{ border: Border }>`
-  ${({ border }) => css`
+  ${({ border, theme }) => css`
     padding: 4px;
     padding-right: 16px;
     border-radius: 8px;
     height: 28px;
     width: 28px;
-    ${Border[border]}
+    ${theme.border[border]}
     appearance: none;
     margin: 0 8px 0 0;
     cursor: pointer;
@@ -58,14 +59,16 @@ const Checkbox = styled.input<{ border: Border }>`
 `
 
 const Label = styled.label`
-  margin-top: 3px;
-  cursor: pointer;
-  ${Font.Body}
+  ${({ theme }) => css`
+    margin-top: 3px;
+    cursor: pointer;
+    ${theme.font.Body}
+  `}
 `
 
 const Check = styled.div<{ border: Border; checked: boolean }>`
-  ${({ border, checked }) => css`
-    ${Border[border]}
+  ${({ theme, border, checked }) => css`
+    ${theme.border[border]}
     ${!checked &&
     css`
       filter: grayscale(1);

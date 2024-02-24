@@ -2,23 +2,23 @@ import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { Fill, ResetStyle } from '.'
+import { Border, ResetStyle } from '../..'
 
 const PaletteComponent = () => {
   return (
     <>
-      {Object.keys(Fill).map((fill, i) => (
-        <Component fill={fill as Fill} key={i}>
-          {fill}
+      {Object.keys(Border).map((border, i) => (
+        <Component border={border as Border} key={i}>
+          {border}
         </Component>
       ))}
     </>
   )
 }
 
-const Component = styled.div<{ fill: Fill }>`
-  ${({ fill }) => css`
-    ${Fill[fill]}
+const Component = styled.div<{ border: Border }>`
+  ${({ border }) => css`
+    ${Border[border]}
     width: 200px;
     height: 20px;
     margin: 12px;
@@ -28,7 +28,7 @@ const Component = styled.div<{ fill: Fill }>`
 `
 
 const meta = {
-  title: 'Foundation/Fill',
+  title: 'Theme/Default/Border',
   component: PaletteComponent,
   parameters: {
     layout: 'centered',

@@ -1,6 +1,6 @@
 {
   "name": "@wookiejin/react-component",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "author": "jhw123",
   "license": "MIT",
   "typings": "./dist/cjs/index.d.ts",
@@ -12,11 +12,11 @@
   ],
   "types": "./dist/cjs/index.d.ts",
   "scripts": {
-    "rollup": "rollup -c",
+    "rollup": "rollup -c --bundleConfigAsCjs",
     "type-check": "tsc --noEmit",
     "lint": "eslint --ext .ts,.tsx .",
     "style-check": "prettier --check 'src/**/*.{tsx,ts}'",
-    "publish": "rollup --bundleConfigAsCjs && npm publish --access public",
+    "publish": "yarn rollup && npm publish --access public",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

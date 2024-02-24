@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
-import { Border, Color, Font, View } from '../../foundation'
+import { View } from '../../foundation'
 
 interface Props {
   value: string
@@ -51,10 +51,10 @@ export const TextInput = View<Props>(
 )
 
 const Container = styled.div<{ rows: number }>`
-  ${({ rows }) => css`
+  ${({ theme, rows }) => css`
     width: calc(100% - 18px);
     border-radius: 8px;
-    ${Border.Secondary}
+    ${theme.border.Secondary}
     padding: 8px;
     height: fit-content;
     box-sizing: content-box;
@@ -65,8 +65,8 @@ const Container = styled.div<{ rows: number }>`
     overflow: auto;
 
     &:focus-within {
-      ${Color.Primary}
-      ${Border.Focus}
+      ${theme.color.Primary}
+      ${theme.border.Focus}
     }
   `}
 `
@@ -76,32 +76,36 @@ const Wrapper = styled.div`
 `
 
 const InputBox = styled.textarea`
-  width: 100%;
-  box-sizing: border-box;
-  font-family: inherit;
-  ${Font.Body}
-  outline: none;
-  position: absolute;
-  height: 100%;
-  resize: none;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  word-break: break-all;
+  ${({ theme }) => css`
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    ${theme.font.Body}
+    outline: none;
+    position: absolute;
+    height: 100%;
+    resize: none;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    word-break: break-all;
 
-  ::placeholder {
-    ${Color.Secondary}
-  }
+    ::placeholder {
+      ${theme.color.Secondary}
+    }
 
-  &:disabled {
-    cursor: not-allowed;
-    filter: grayscale(1);
-  }
+    &:disabled {
+      cursor: not-allowed;
+      filter: grayscale(1);
+    }
+  `}
 `
 
 const HeightResizer = styled.div`
-  white-space: pre-line;
-  ${Font.Body}
-  opacity: 0;
-  word-break: break-all;
+  ${({ theme }) => css`
+    white-space: pre-line;
+    ${theme.font.Body}
+    opacity: 0;
+    word-break: break-all;
+  `}
 `

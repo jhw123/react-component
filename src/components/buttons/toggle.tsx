@@ -1,8 +1,11 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { useCallback } from 'react'
+import { View } from '../../foundation'
 import { MIN_BUTTON_SIZE } from '../../foundation/size'
-import { Fill, Color, View, Font, Border } from '../../foundation'
+import { Border } from '../../themes/default/border'
+import { Color } from '../../themes/default/color'
+import { Fill } from '../../themes/default/fill'
 
 interface Props {
   disabled?: boolean
@@ -32,10 +35,10 @@ export const ToggleButton = View<Props>(({ left, right, fill, onClick, isLeft = 
 })
 
 const Container = styled.button<{ border: Border }>`
-  ${({ border }) => css`
-    ${Font.Body}
+  ${({ border, theme }) => css`
+    ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
-    ${Border[border]}
+    ${theme.border[border]}
     border-radius: 8px;
     cursor: pointer;
     padding: 4px 8px;
@@ -59,11 +62,11 @@ const Container = styled.button<{ border: Border }>`
 `
 
 const Toggle = styled.div<{ isLeft: boolean; fill: Fill }>`
-  ${({ isLeft, fill }) => css`
+  ${({ isLeft, fill, theme }) => css`
     left: ${isLeft ? '4px' : 'calc(50%)'};
     width: calc(50% - 4px);
     height: calc(100% - 8px);
-    ${Fill[fill]}
+    ${theme.fill[fill]}
     position: absolute;
     border-radius: 6px;
     transition: left 0.2s ease-in-out;
@@ -71,8 +74,8 @@ const Toggle = styled.div<{ isLeft: boolean; fill: Fill }>`
 `
 
 const Label = styled.div<{ active: boolean; color: Fill & Color }>`
-  ${({ active, color }) => css`
-    ${active ? 'color: white;' : Color[color]}
+  ${({ active, color, theme }) => css`
+    ${active ? 'color: white;' : theme.color[color]}
     position: relative;
     transition: color 0.2s ease-in-out;
   `}

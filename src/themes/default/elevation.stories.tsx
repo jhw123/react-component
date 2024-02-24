@@ -2,23 +2,23 @@ import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { Color, ResetStyle } from '.'
+import { Elevation, ResetStyle } from '../../'
 
 const PaletteComponent = () => {
   return (
     <>
-      {Object.keys(Color).map((color, i) => (
-        <Component color={color as Color} key={i}>
-          {color}
+      {Object.keys(Elevation).map((elevation, i) => (
+        <Component elevation={elevation as Elevation} key={i}>
+          {elevation}
         </Component>
       ))}
     </>
   )
 }
 
-const Component = styled.div<{ color: Color }>`
-  ${({ color }) => css`
-    ${Color[color]}
+const Component = styled.div<{ elevation: Elevation }>`
+  ${({ elevation }) => css`
+    ${Elevation[elevation]}
     width: 200px;
     height: 20px;
     margin: 12px;
@@ -28,7 +28,7 @@ const Component = styled.div<{ color: Color }>`
 `
 
 const meta = {
-  title: 'Foundation/Color',
+  title: 'Theme/Default/Elevation',
   component: PaletteComponent,
   parameters: {
     layout: 'centered',

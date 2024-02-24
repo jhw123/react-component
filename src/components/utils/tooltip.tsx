@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
 import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import React from 'react'
-import { View, Fill, Color, Font } from '../../foundation'
+import { View } from '../../foundation'
 
 interface Props {
   tooltip: string
@@ -19,7 +19,7 @@ export const Tooltip = View<Props>(({ tooltip, children, position = 'top', width
 })
 
 const Container = styled.div<{ position: 'top' | 'bottom'; width: string }>`
-  ${({ position, width }) => css`
+  ${({ theme, position, width }) => css`
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -29,7 +29,7 @@ const Container = styled.div<{ position: 'top' | 'bottom'; width: string }>`
     &[data-tooltip]:hover::before {
       content: '';
       position: absolute;
-      ${Fill.Primary}
+      ${theme.fill.Primary}
       width: 16px;
       height: 16px;
       top: ${position === 'top' ? '-20px' : 'calc(100% + 4px)'};
@@ -39,10 +39,10 @@ const Container = styled.div<{ position: 'top' | 'bottom'; width: string }>`
 
     &[data-tooltip]:hover::after {
       content: attr(data-tooltip);
-      ${Color.Focus}
+      ${theme.color.Focus}
       position: absolute;
-      ${Fill.Primary}
-      ${Font.Caption}
+      ${theme.fill.Primary}
+      ${theme.font.Caption}
       max-width: ${width};
       word-break: break-all;
       ${position === 'top'

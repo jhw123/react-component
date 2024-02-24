@@ -1,7 +1,8 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
-import { Border, View } from '../../foundation'
+import { View } from '../../foundation'
+import { Border } from '../../themes/default/border'
 
 interface Props {
   border?: Border
@@ -19,11 +20,11 @@ const spinning = keyframes`
 `
 
 const Container = styled.div<{ border: Border }>`
-  ${({ border }) => css`
+  ${({ border, theme }) => css`
     width: 1.5rem;
     height: 1.5rem;
     box-sizing: border-box;
-    ${Border[border]}
+    ${theme.border[border]}
     border-left-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
@@ -36,7 +37,7 @@ const Container = styled.div<{ border: Border }>`
       width: calc(100% + 4px);
       height: calc(100% + 4px);
       box-sizing: border-box;
-      ${Border[border]}
+      ${theme.border[border]}
       opacity: 0.3;
       border-radius: 100%;
       display: block;

@@ -1,8 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React from 'react'
-import { useCallback, useId } from 'react'
-import { Fill, Border, View, Font } from '../../foundation'
+import React, { useCallback, useId } from 'react'
+import { View } from '../../foundation'
+import { Border } from '../../themes/default/border'
+import { Fill } from '../../themes/default/fill'
 
 interface Props {
   children?: React.ReactNode
@@ -40,7 +41,7 @@ const Container = styled.div`
 `
 
 const RadioCircle = styled.input<{ border: Border }>`
-  ${({ border }) => css`
+  ${({ theme, border }) => css`
     padding-right: 16px;
     border-radius: 50%;
     height: 28px;
@@ -48,7 +49,7 @@ const RadioCircle = styled.input<{ border: Border }>`
     appearance: none;
     margin: 0 8px 0 0;
     cursor: pointer;
-    ${Border[border]}
+    ${theme.border[border]}
     flex-shrink: 0;
 
     &:disabled {
@@ -59,14 +60,16 @@ const RadioCircle = styled.input<{ border: Border }>`
 `
 
 const Label = styled.label`
-  cursor: pointer;
-  ${Font.Body}
-  margin-top: 3px;
+  ${({ theme }) => css`
+    cursor: pointer;
+    ${theme.font.Body}
+    margin-top: 3px;
+  `}
 `
 
 const Check = styled.div<{ fill: Fill }>`
-  ${({ fill }) => css`
-    ${Fill[fill]}
+  ${({ theme, fill }) => css`
+    ${theme.fill[fill]}
     width: 18px;
     height: 18px;
     position: absolute;

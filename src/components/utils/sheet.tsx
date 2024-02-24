@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import React from 'react'
-import { Fill, View, Elevation } from '../../foundation'
+import { View } from '../../foundation'
+import { Fill } from '../../themes/default/fill'
 
 interface Props {
   fill?: Fill
@@ -26,17 +27,18 @@ export const Sheet = View<Props>(
     paddingHorizonal,
     paddingVertical,
     children,
+    style,
     ...props
   }) => {
-    const style = {
+    const styleWithPadding = Object.assign(style, {
       paddingLeft: paddingLeft ?? paddingHorizonal ?? padding,
       paddingRight: paddingRight ?? paddingHorizonal ?? padding,
       paddingTop: paddingTop ?? paddingVertical ?? padding,
       paddingBottom: paddingBottom ?? paddingVertical ?? padding,
-    }
+    })
 
     return (
-      <Container {...props} fill={fill} style={style}>
+      <Container {...props} fill={fill} style={styleWithPadding}>
         {children}
       </Container>
     )
@@ -44,8 +46,8 @@ export const Sheet = View<Props>(
 )
 
 const Container = styled.div<{ fill: Fill }>`
-  ${({ fill }) => css`
-    ${Elevation.L1}
+  ${({ theme, fill }) => css`
+    ${theme.elevation.L1}
     width: auto;
     ${Fill[fill]}
   `}
