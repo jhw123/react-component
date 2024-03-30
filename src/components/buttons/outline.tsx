@@ -9,7 +9,7 @@ import { Color } from '../../themes/default/color'
 interface Props {
   disabled?: boolean
   children: React.ReactNode
-  onClick?: () => void
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
   color?: Border & Color
 }
 

@@ -8,7 +8,7 @@ import { Fill } from '../../themes/default/fill'
 interface Props {
   disabled?: boolean
   children: React.ReactNode
-  onClick?: () => void
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
   fill: Fill
 }
 
