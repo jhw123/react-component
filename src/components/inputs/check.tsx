@@ -12,8 +12,8 @@ interface Props {
   onCheck?: (nextState: boolean) => void
 }
 
-export const CheckInput = View(
-  ({ disabled = false, checked = true, children, onCheck, checkColor = 'Focus', ...props }: Props) => {
+export const CheckInput = View<Props>(
+  ({ disabled = false, checked = true, children, onCheck, checkColor = 'Focus', forwardedRef, ...props }) => {
     const id = useId()
 
     const onClick = useCallback(() => {
@@ -22,7 +22,14 @@ export const CheckInput = View(
 
     return (
       <Container {...props}>
-        <Checkbox id={id} type="checkbox" border={checkColor} onClick={onClick} disabled={disabled} />
+        <Checkbox
+          id={id}
+          type="checkbox"
+          border={checkColor}
+          onClick={onClick}
+          disabled={disabled}
+          ref={forwardedRef}
+        />
         <Label htmlFor={id}>{children}</Label>
         <Check border={checkColor} checked={checked} />
       </Container>

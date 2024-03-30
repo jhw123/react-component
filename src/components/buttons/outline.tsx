@@ -13,13 +13,15 @@ interface Props {
   color?: Border & Color
 }
 
-export const OutlineButton = View<Props>(({ disabled = false, children, color = 'Primary', onClick, ...props }) => {
-  return (
-    <Container color={color} {...props} onClick={onClick} disabled={disabled}>
-      {children}
-    </Container>
-  )
-})
+export const OutlineButton = View<Props>(
+  ({ disabled = false, children, color = 'Primary', onClick, forwardedRef, ...props }) => {
+    return (
+      <Container color={color} {...props} onClick={onClick} disabled={disabled} ref={forwardedRef}>
+        {children}
+      </Container>
+    )
+  }
+)
 
 const Container = styled.button<{ color: Border & Color }>`
   ${({ color, theme }) => css`

@@ -1,6 +1,6 @@
-import React, { FC, RefObject } from 'react'
+import React, { FC, ForwardedRef, PropsWithoutRef } from 'react'
 
-export interface ViewOption<Ref extends HTMLOrSVGElement> {
+export interface ViewOption {
   margin?: number
   marginLeft?: number
   marginRight?: number
@@ -8,30 +8,20 @@ export interface ViewOption<Ref extends HTMLOrSVGElement> {
   marginBottom?: number
   marginHorizontal?: number
   marginVertical?: number
-  ref?: RefObject<Ref>
 }
 
-export function View<T, Ref extends HTMLOrSVGElement | never = never>(
+export function View<T>(
   Component: FC<
     T & {
-      style: Pick<ViewOption<Ref>, 'marginLeft' | 'marginRight' | 'marginTop' | 'marginBottom'>
+      style: Pick<ViewOption, 'marginLeft' | 'marginRight' | 'marginTop' | 'marginBottom'>
       className?: string
-      ref?: RefObject<Ref>
+      forwardedRef: ForwardedRef<any>
     }
   >
-): FC<T & ViewOption<Ref>> {
-  return function view(propsWithUIOptions: T & ViewOption<Ref>) {
-    const {
-      margin,
-      marginTop,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      marginHorizontal,
-      marginVertical,
-      ref,
-      ...props
-    } = propsWithUIOptions
+) {
+  return React.forwardRef((propsWithUIOptions: T & ViewOption, ref) => {
+    const { margin, marginTop, marginBottom, marginLeft, marginRight, marginHorizontal, marginVertical, ...props } =
+      propsWithUIOptions
 
     const style = {
       marginLeft: marginLeft ?? marginHorizontal ?? margin,
@@ -40,6 +30,6 @@ export function View<T, Ref extends HTMLOrSVGElement | never = never>(
       marginBottom: marginBottom ?? marginVertical ?? margin,
     }
 
-    return <Component style={style} ref={ref} {...(props as T)} />
-  }
+    return <Component style={style} forwardedRef={ref} {...(props as T)} />
+  })
 }

@@ -12,9 +12,9 @@ interface Props {
   fill: Fill
 }
 
-export const FillButton = View<Props>(({ children, fill, onClick, disabled = false, ...props }) => {
+export const FillButton = View<Props>(({ children, fill, onClick, disabled = false, forwardedRef, ...props }) => {
   return (
-    <Container {...props} fill={fill} onClick={onClick} disabled={disabled}>
+    <Container {...props} fill={fill} onClick={onClick} disabled={disabled} ref={forwardedRef}>
       {children}
     </Container>
   )

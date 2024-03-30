@@ -14,7 +14,17 @@ interface Props {
 }
 
 export const TextInput = View<Props>(
-  ({ value, onChange, disabled = false, placeholder, maxRows = 0, readonly = false, onEnter, ...props }) => {
+  ({
+    value,
+    onChange,
+    disabled = false,
+    placeholder,
+    maxRows = 0,
+    readonly = false,
+    onEnter,
+    forwardedRef,
+    ...props
+  }) => {
     const onWrite = useCallback(
       (e: ChangeEvent<HTMLTextAreaElement>) => {
         onChange?.(e.target.value)
@@ -43,6 +53,7 @@ export const TextInput = View<Props>(
             placeholder={placeholder}
             readOnly={readonly}
             onKeyUp={onKeyDown}
+            ref={forwardedRef}
           />
         </Wrapper>
       </Container>

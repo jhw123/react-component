@@ -15,9 +15,9 @@ interface Props {
 }
 
 export const TextButton = View<Props>(
-  ({ children, color = 'Secondary', font = 'Caption', onClick, disabled = false, ...props }) => {
+  ({ children, color = 'Secondary', font = 'Caption', onClick, disabled = false, forwardedRef, ...props }) => {
     return (
-      <Container {...props} color={color} font={font} onClick={onClick} disabled={disabled}>
+      <Container {...props} color={color} font={font} onClick={onClick} disabled={disabled} ref={forwardedRef}>
         {children}
       </Container>
     )
