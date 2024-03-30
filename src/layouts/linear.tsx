@@ -7,22 +7,25 @@ interface Props {
   gap?: number
   children: React.ReactNode
   justifyContent?: 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly'
+  alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline'
 }
 
-export const LinearLayout = View<Props>(({ children, gap = 0, justifyContent = 'space-between', ...props }) => {
-  return (
-    <Container {...props} gap={gap} justifyContent={justifyContent}>
-      {children}
-    </Container>
-  )
-})
+export const LinearLayout = View<Props>(
+  ({ children, gap = 0, justifyContent = 'space-between', alignItems = 'center', ...props }) => {
+    return (
+      <Container {...props} gap={gap} justifyContent={justifyContent} alignItems={alignItems}>
+        {children}
+      </Container>
+    )
+  }
+)
 
-const Container = styled.div<{ gap: number; justifyContent: string }>`
-  ${({ gap, justifyContent }) => css`
+const Container = styled.div<{ gap: number; justifyContent: string; alignItems: string }>`
+  ${({ gap, justifyContent, alignItems }) => css`
     display: flex;
     flex-direction: row;
     gap: ${gap}px;
-    align-items: center;
+    align-items: ${alignItems};
     justify-content: ${justifyContent};
   `}
 `
