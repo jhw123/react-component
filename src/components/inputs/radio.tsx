@@ -13,8 +13,8 @@ interface Props {
   onCheck?: (nextState: boolean) => void
 }
 
-export const RadioInput = View(
-  ({ checked = true, disabled = false, children, onCheck, fill = 'Focus', ...props }: Props) => {
+export const RadioInput = View<Props>(
+  ({ checked = true, disabled = false, children, onCheck, fill = 'Focus', forwardedRef, ...props }) => {
     const id = useId()
 
     const onClick = useCallback(() => {
@@ -23,7 +23,7 @@ export const RadioInput = View(
 
     return (
       <Container {...props}>
-        <RadioCircle id={id} border={fill} type="radio" onClick={onClick} disabled={disabled} />
+        <RadioCircle id={id} border={fill} type="radio" onClick={onClick} disabled={disabled} ref={forwardedRef} />
         <Label htmlFor={id}>{children}</Label>
         {checked && <Check fill={fill} />}
       </Container>

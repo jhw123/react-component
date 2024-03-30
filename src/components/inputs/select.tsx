@@ -10,7 +10,7 @@ interface Props {
   onSelect: (index: number, value: string) => void
 }
 
-export const SelectInput = View(({ options, onSelect, value, ...props }: Props) => {
+export const SelectInput = View<Props>(({ options, onSelect, value, forwardedRef, ...props }) => {
   const onClick = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => {
       const i = options.findIndex(op => op === e.target.value)
@@ -21,7 +21,7 @@ export const SelectInput = View(({ options, onSelect, value, ...props }: Props) 
 
   return (
     <Container {...props}>
-      <Options onChange={onClick} value={value}>
+      <Options onChange={onClick} value={value} ref={forwardedRef}>
         {options.map((option, i) => (
           <option key={i}>{option}</option>
         ))}

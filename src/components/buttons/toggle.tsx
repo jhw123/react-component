@@ -16,26 +16,28 @@ interface Props {
   fill: Exclude<Fill & Color & Border, 'Primary'>
 }
 
-export const ToggleButton = View<Props>(({ left, right, fill, onClick, isLeft = true, disabled = false, ...props }) => {
-  const onToggle = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      onClick?.(!isLeft, e)
-    },
-    [isLeft, onClick]
-  )
+export const ToggleButton = View<Props>(
+  ({ left, right, fill, onClick, isLeft = true, disabled = false, forwardedRef, ...props }) => {
+    const onToggle = useCallback(
+      (e: React.MouseEvent<HTMLButtonElement>) => {
+        onClick?.(!isLeft, e)
+      },
+      [isLeft, onClick]
+    )
 
-  return (
-    <Container {...props} border={fill} onClick={onToggle} disabled={disabled}>
-      <Toggle fill={fill} isLeft={isLeft} />
-      <Label active={isLeft} color={fill}>
-        {left}
-      </Label>
-      <Label active={!isLeft} color={fill}>
-        {right}
-      </Label>
-    </Container>
-  )
-})
+    return (
+      <Container {...props} border={fill} onClick={onToggle} disabled={disabled} ref={forwardedRef}>
+        <Toggle fill={fill} isLeft={isLeft} />
+        <Label active={isLeft} color={fill}>
+          {left}
+        </Label>
+        <Label active={!isLeft} color={fill}>
+          {right}
+        </Label>
+      </Container>
+    )
+  }
+)
 
 const Container = styled.button<{ border: Border }>`
   ${({ border, theme }) => css`
