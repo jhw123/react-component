@@ -9,7 +9,7 @@ import { Fill } from '../../themes/default/fill'
 
 interface Props {
   disabled?: boolean
-  onClick?: (next: boolean) => void
+  onClick?: (next: boolean, e: React.MouseEvent<HTMLButtonElement>) => void
   left: string
   right: string
   isLeft?: boolean
@@ -17,9 +17,12 @@ interface Props {
 }
 
 export const ToggleButton = View<Props>(({ left, right, fill, onClick, isLeft = true, disabled = false, ...props }) => {
-  const onToggle = useCallback(() => {
-    onClick?.(!isLeft)
-  }, [isLeft, onClick])
+  const onToggle = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      onClick?.(!isLeft, e)
+    },
+    [isLeft, onClick]
+  )
 
   return (
     <Container {...props} border={fill} onClick={onToggle} disabled={disabled}>

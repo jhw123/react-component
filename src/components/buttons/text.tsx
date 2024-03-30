@@ -11,7 +11,7 @@ interface Props {
   children: React.ReactNode
   color?: Color
   font?: Font
-  onClick?: () => void
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
 export const TextButton = View<Props>(
