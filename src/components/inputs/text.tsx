@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 import { View } from '../../foundation'
+import { Color } from '../../themes/default/color'
 
 interface Props {
   value: string
@@ -9,6 +10,7 @@ interface Props {
   placeholder?: string
   maxRows?: number
   readonly?: boolean
+  color?: Color
   onChange?: (value: string) => void
   onEnter?: () => void
 }
@@ -21,8 +23,9 @@ export const TextInput = View<Props>(
     placeholder,
     maxRows = 0,
     readonly = false,
-    onEnter,
     forwardedRef,
+    color = 'Primary',
+    onEnter,
     ...props
   }) => {
     const onWrite = useCallback(
@@ -43,7 +46,7 @@ export const TextInput = View<Props>(
     )
 
     return (
-      <Container {...props} rows={maxRows}>
+      <Container {...props} color={color} rows={maxRows}>
         <Wrapper>
           <HeightResizer>{value + '\n'}</HeightResizer>
           <InputBox
@@ -61,11 +64,12 @@ export const TextInput = View<Props>(
   }
 )
 
-const Container = styled.div<{ rows: number }>`
-  ${({ theme, rows }) => css`
+const Container = styled.div<{ rows: number; color: Color }>`
+  ${({ theme, rows, color }) => css`
     width: calc(100% - 18px);
     border-radius: 8px;
     ${theme.border.Secondary}
+    ${theme.color[color]}
     padding: 8px;
     height: fit-content;
     box-sizing: content-box;
@@ -76,7 +80,6 @@ const Container = styled.div<{ rows: number }>`
     overflow: auto;
 
     &:focus-within {
-      ${theme.color.Primary}
       ${theme.border.Focus}
     }
   `}
