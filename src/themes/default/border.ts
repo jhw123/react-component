@@ -20,6 +20,13 @@ export const Border = {
   Focus: css`
     border: 2px solid ${BaseColor.Blue030};
   `,
+  Highlight: css`
+    border: 2px solid ${BaseColor.Gray100};
+
+    @media (prefers-color-scheme: dark) {
+      border: 2px solid ${BaseColor.Gray000};
+    }
+  `,
 } as const
 
 export type Border = keyof typeof Border

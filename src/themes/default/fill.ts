@@ -29,6 +29,12 @@ export const Fill = {
       background-color: ${BaseColor.Blue030};
     }
   `,
+  Highlight: css`
+    background-color: ${BaseColor.Gray100};
+    @media (prefers-color-scheme: dark) {
+      background-color: ${BaseColor.Gray000};
+    }
+  `,
 }
 
 export type Fill = keyof typeof Fill

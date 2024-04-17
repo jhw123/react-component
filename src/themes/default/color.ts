@@ -38,6 +38,12 @@ export const Color = {
       fill: ${BaseColor.Blue020};
     }
   `,
+  Highlight: css`
+    color: ${BaseColor.Gray000};
+    @media (prefers-color-scheme: dark) {
+      color: ${BaseColor.Gray100};
+    }
+  `,
 } as const
 
 export type Color = keyof typeof Color
