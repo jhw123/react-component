@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import React, { MutableRefObject, useCallback, useEffect, useId, useState } from 'react'
 import { View } from '../../foundation'
 import { Fill } from '../../themes/default/fill'
+import { MIN_BUTTON_SIZE } from '../../foundation/size'
 
 interface Props {
   children: React.ReactNode
@@ -68,7 +69,9 @@ const Button = styled.div<{ fill: Fill }>`
     justify-content: center;
     border-radius: 8px;
     padding: 8px;
-    min-height: 42px;
+    min-height: ${MIN_BUTTON_SIZE}px;
+    color: white;
+    box-sizing: border-box;
     cursor: pointer;
   `}
 `
