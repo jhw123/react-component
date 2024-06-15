@@ -8,7 +8,7 @@ interface Props {
   border?: Border
 }
 
-export const CircleLoading = View<Props>(({ border = 'Focus', ...props }) => {
+export const CircleLoading = View<Props>(({ border = 'Secondary', ...props }) => {
   return <Container {...props} border={border} />
 })
 

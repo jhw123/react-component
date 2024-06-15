@@ -10,8 +10,8 @@ import { Fill } from '../../themes/default/fill'
 interface Props {
   disabled?: boolean
   onClick?: (next: boolean, e: React.MouseEvent<HTMLButtonElement>) => void
-  left: string
-  right: string
+  left: React.ReactNode
+  right: React.ReactNode
   isLeft?: boolean
   fill: Exclude<Fill & Color & Border, 'Primary'>
 }

@@ -49,6 +49,6 @@ const Container = styled.div<{ fill: Fill }>`
   ${({ theme, fill }) => css`
     ${theme.elevation.L1}
     width: auto;
-    ${Fill[fill]}
+    ${theme.fill[fill]}
   `}
 `
