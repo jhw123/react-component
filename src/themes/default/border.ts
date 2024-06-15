@@ -27,6 +27,9 @@ export const Border = {
       border: 2px solid ${BaseColor.Gray000};
     }
   `,
+  Brand: css`
+    border: 2px solid ${BaseColor.Purple};
+  `,
 } as const
 
 export type Border = keyof typeof Border
