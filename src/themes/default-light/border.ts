@@ -20,6 +20,9 @@ export const Border = {
   Focus: css`
     border: 2px solid ${BaseColor.Gray090};
   `,
+  Highlight: css`
+    background-color: ${BaseColor.Gray000};
+  `,
   Brand: css`
     border: 2px solid ${BaseColor.Blue};
   `,
