@@ -18,17 +18,13 @@ export const Border = {
     border: 2px solid ${BaseColor.Orange};
   `,
   Focus: css`
-    border: 2px solid ${BaseColor.Blue030};
+    border: 2px solid ${BaseColor.Gray090};
   `,
   Highlight: css`
-    border: 2px solid ${BaseColor.Gray100};
-
-    @media (prefers-color-scheme: dark) {
-      border: 2px solid ${BaseColor.Gray000};
-    }
+    background-color: ${BaseColor.Gray000};
   `,
   Brand: css`
-    border: 2px solid ${BaseColor.Purple};
+    border: 2px solid ${BaseColor.Blue};
   `,
 } as const
 

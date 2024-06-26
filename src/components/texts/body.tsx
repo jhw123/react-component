@@ -23,7 +23,7 @@ export const BodyText = View<Props>(({ children, color = 'Primary', align = 'lef
 const Container = styled.div<{ color: Color; align: Align }>`
   ${({ theme, color, align }) => css`
     ${theme.font.Body}
-    ${Color[color]}
+    ${theme.color[color]}
     text-align: ${align};
     white-space: pre-wrap;
     height: min-content;

@@ -30,7 +30,7 @@ export const CheckInput = View<Props>(
           disabled={disabled}
           ref={forwardedRef}
         />
-        <Label htmlFor={id}>{children}</Label>
+        {children && <Label htmlFor={id}>{children}</Label>}
         <Check border={checkColor} checked={checked} />
       </Container>
     )
@@ -55,7 +55,6 @@ const Checkbox = styled.input<{ border: Border }>`
     width: 28px;
     ${theme.border[border]}
     appearance: none;
-    margin: 0 8px 0 0;
     cursor: pointer;
 
     &:disabled {
@@ -68,6 +67,7 @@ const Checkbox = styled.input<{ border: Border }>`
 const Label = styled.label`
   ${({ theme }) => css`
     margin-top: 3px;
+    margin-left: 8px;
     cursor: pointer;
     ${theme.font.Body}
   `}
@@ -91,5 +91,6 @@ const Check = styled.div<{ border: Border; checked: boolean }>`
     left: 8px;
     top: 3px;
     pointer-events: none;
+    box-sizing: content-box;
   `}
 `

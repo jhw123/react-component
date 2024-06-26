@@ -44,6 +44,10 @@ export const Color = {
       color: ${BaseColor.Gray100};
     }
   `,
+  Brand: css`
+    color: ${BaseColor.Purple};
+    fill: ${BaseColor.Purple};
+  `,
 } as const
 
 export type Color = keyof typeof Color

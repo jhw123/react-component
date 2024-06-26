@@ -9,16 +9,18 @@ interface Props {
   disabled?: boolean
   children: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLButtonElement>
-  fill: Fill
+  fill?: Fill
 }
 
-export const FillButton = View<Props>(({ children, fill, onClick, disabled = false, forwardedRef, ...props }) => {
-  return (
-    <Container {...props} fill={fill} onClick={onClick} disabled={disabled} ref={forwardedRef}>
-      {children}
-    </Container>
-  )
-})
+export const FillButton = View<Props>(
+  ({ children, fill = 'Focus', onClick, disabled = false, forwardedRef, ...props }) => {
+    return (
+      <Container {...props} fill={fill} onClick={onClick} disabled={disabled} ref={forwardedRef}>
+        {children}
+      </Container>
+    )
+  }
+)
 
 const Container = styled.button<{ fill: Fill }>`
   ${({ fill, theme }) => css`

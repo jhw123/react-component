@@ -35,6 +35,9 @@ export const Fill = {
       background-color: ${BaseColor.Gray000};
     }
   `,
+  Brand: css`
+    background-color: ${BaseColor.Purple};
+  `,
 }
 
 export type Fill = keyof typeof Fill
