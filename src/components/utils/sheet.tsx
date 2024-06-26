@@ -3,9 +3,11 @@ import { css } from '@emotion/react'
 import React from 'react'
 import { View } from '../../foundation'
 import { Fill } from '../../themes/default/fill'
+import { Elevation } from '../../themes/default/elevation'
 
 interface Props {
   fill?: Fill
+  elevation?: Elevation
   padding?: number
   paddingLeft?: number
   paddingRight?: number
@@ -19,6 +21,7 @@ interface Props {
 export const Sheet = View<Props>(
   ({
     fill = 'Secondary',
+    elevation = 'L0',
     padding,
     paddingBottom,
     paddingTop,
@@ -38,16 +41,16 @@ export const Sheet = View<Props>(
     })
 
     return (
-      <Container {...props} fill={fill} style={styleWithPadding}>
+      <Container {...props} fill={fill} elevation={elevation} style={styleWithPadding}>
         {children}
       </Container>
     )
   }
 )
 
-const Container = styled.div<{ fill: Fill }>`
-  ${({ theme, fill }) => css`
-    ${theme.elevation.L1}
+const Container = styled.div<{ fill: Fill; elevation: Elevation }>`
+  ${({ theme, fill, elevation }) => css`
+    ${theme.elevation[elevation]}
     width: auto;
     ${theme.fill[fill]}
   `}
