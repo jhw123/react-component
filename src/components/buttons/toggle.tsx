@@ -55,12 +55,11 @@ const Container = styled.button<{ border: Border }>`
     position: relative;
 
     &:not(:disabled):hover {
-      background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
-      background-blend-mode: darken;
+      filter: brightness(0.9);
     }
 
     &:disabled {
-      filter: grayscale(0.8);
+      filter: contrast(0.6);
       cursor: not-allowed;
     }
   `}

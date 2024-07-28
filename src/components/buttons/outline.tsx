@@ -38,12 +38,11 @@ const Container = styled.button<{ color: Border & Color }>`
     justify-content: center;
 
     &:not(:disabled):hover {
-      background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
-      background-blend-mode: lighten;
+      filter: brightness(0.9);
     }
 
     &:disabled {
-      filter: grayscale(0.8);
+      filter: contrast(0.6);
       cursor: not-allowed;
     }
   `}

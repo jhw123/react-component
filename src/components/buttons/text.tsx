@@ -37,12 +37,12 @@ const Container = styled.button<{ color: Color; font: Font }>`
     justify-content: center;
 
     &:not(:disabled):hover {
-      filter: brightness(0.8);
+      filter: brightness(0.9);
     }
 
     &:disabled {
+      filter: contrast(0.6);
       cursor: not-allowed;
-      filter: grayscale(1);
     }
   `}
 `
