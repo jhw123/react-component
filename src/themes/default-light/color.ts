@@ -18,10 +18,10 @@ export const Color = {
     color: ${BaseColor.Orange};
   `,
   Focus: css`
-    color: ${BaseColor.Gray090};
+    color: ${BaseColor.Purple};
   `,
-  Highlight: css`
-    background-color: ${BaseColor.Gray000};
+  Contrast: css`
+    color: ${BaseColor.Gray000};
   `,
   Brand: css`
     color: ${BaseColor.Blue};

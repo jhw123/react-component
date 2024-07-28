@@ -20,7 +20,7 @@ export const Border = {
   Focus: css`
     border: 2px solid ${BaseColor.Blue030};
   `,
-  Highlight: css`
+  Contrast: css`
     border: 2px solid ${BaseColor.Gray100};
 
     @media (prefers-color-scheme: dark) {

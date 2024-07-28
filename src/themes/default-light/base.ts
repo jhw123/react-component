@@ -14,5 +14,6 @@ export const BaseColor = {
   Blue: '#4287f5',
   Green: '#009916',
   Orange: '#f59642',
-  Red: '#FF0060',
+  Purple: '#7c00fe',
+  Red: '#ff0060',
 }

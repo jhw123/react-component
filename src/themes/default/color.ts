@@ -38,7 +38,7 @@ export const Color = {
       fill: ${BaseColor.Blue020};
     }
   `,
-  Highlight: css`
+  Contrast: css`
     color: ${BaseColor.Gray000};
     @media (prefers-color-scheme: dark) {
       color: ${BaseColor.Gray100};

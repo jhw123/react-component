@@ -18,10 +18,10 @@ export const Fill = {
     background-color: ${BaseColor.Orange};
   `,
   Focus: css`
-    background-color: ${BaseColor.Gray090};
+    background-color: ${BaseColor.Purple};
   `,
-  Highlight: css`
-    background-color: ${BaseColor.Gray000};
+  Contrast: css`
+    background-color: ${BaseColor.Gray090};
   `,
   Brand: css`
     background-color: ${BaseColor.Blue};

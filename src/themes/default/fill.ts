@@ -29,7 +29,7 @@ export const Fill = {
       background-color: ${BaseColor.Blue030};
     }
   `,
-  Highlight: css`
+  Contrast: css`
     background-color: ${BaseColor.Gray100};
     @media (prefers-color-scheme: dark) {
       background-color: ${BaseColor.Gray000};
