@@ -3,14 +3,17 @@ import styled from '@emotion/styled'
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 import { View } from '../../foundation'
 import { Color } from '../../themes/default/color'
+import { Border } from '../../themes/default/border'
 
 interface Props {
   value: string
   disabled?: boolean
   placeholder?: string
   maxRows?: number
+  minRows?: number
   readonly?: boolean
   color?: Color
+  border?: Border
   onChange?: (value: string) => void
   onEnter?: () => void
 }
@@ -22,9 +25,11 @@ export const TextInput = View<Props>(
     disabled = false,
     placeholder,
     maxRows = 0,
+    minRows = 0,
     readonly = false,
     forwardedRef,
     color = 'Primary',
+    border = 'Focus',
     onEnter,
     ...props
   }) => {
@@ -46,7 +51,7 @@ export const TextInput = View<Props>(
     )
 
     return (
-      <Container {...props} color={color} rows={maxRows}>
+      <Container {...props} color={color} maxRows={maxRows} minRows={minRows} border={border}>
         <Wrapper>
           <HeightResizer>{value + '\n'}</HeightResizer>
           <InputBox
@@ -64,8 +69,8 @@ export const TextInput = View<Props>(
   }
 )
 
-const Container = styled.div<{ rows: number; color: Color }>`
-  ${({ theme, rows, color }) => css`
+const Container = styled.div<{ maxRows: number; minRows: number; color: Color; border: Border }>`
+  ${({ theme, maxRows, minRows, color, border }) => css`
     width: calc(100% - 18px);
     border-radius: 8px;
     ${theme.border.Secondary}
@@ -73,14 +78,18 @@ const Container = styled.div<{ rows: number; color: Color }>`
     padding: 8px;
     height: fit-content;
     box-sizing: content-box;
-    ${0 < rows &&
+    ${0 < maxRows &&
     css`
-      max-height: ${rows * 1.4}rem;
+      max-height: ${maxRows * 1.4}rem;
+    `}
+    ${0 < minRows &&
+    css`
+      min-height: ${minRows * 1.4}rem;
     `}
     overflow: auto;
 
     &:focus-within {
-      ${theme.border.Focus}
+      ${theme.border[border]}
     }
   `}
 `
