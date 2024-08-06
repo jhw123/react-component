@@ -84,12 +84,12 @@ const Check = styled.div<{ border: Border; checked: boolean }>`
     border-width: 4px;
     border-left: none;
     border-top: none;
-    width: 8px;
-    height: 14px;
+    width: 6px;
+    height: 12px;
     position: absolute;
     transform: rotate(45deg);
     left: 8px;
-    top: 3px;
+    top: 4px;
     pointer-events: none;
     box-sizing: content-box;
   `}
