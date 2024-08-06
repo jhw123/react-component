@@ -17,13 +17,20 @@ interface Props {
 }
 
 export const SliderInput = View<Props>(
-  ({ min, max, minLabel, maxLabel, fill = 'Brand', value = min, onChange, ...props }) => {
+  ({ min, max, minLabel, maxLabel, fill = 'Focus', value = min, onChange, ...props }) => {
     const ticks = useMemo(() => Array.from({ length: max - min + 1 }, (_, i) => i + min), [max, min])
 
     return (
       <Container {...props}>
         <Track />
-        <Slider type="range" min={min} max={max} value={value} onChange={e => onChange?.(Number(e.target.value))} />
+        <Slider
+          type="range"
+          fill={fill}
+          min={min}
+          max={max}
+          value={value}
+          onChange={e => onChange?.(Number(e.target.value))}
+        />
         <TickContainer>
           {ticks.map(tick => (
             <Tick key={tick} fill={fill} />
@@ -42,11 +49,22 @@ const Container = styled.div`
   position: relative;
 `
 
-const Slider = styled.input`
-  width: 100%;
-  appearance: none;
-  position: relative;
-  cursor: pointer;
+const Slider = styled.input<{ fill: Fill }>`
+  ${({ theme, fill }) => css`
+    width: 100%;
+    appearance: none;
+    position: relative;
+    cursor: pointer;
+
+    ::-webkit-slider-thumb {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      ${theme.fill[fill]}
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  `}
 `
 
 const Track = styled.div`
