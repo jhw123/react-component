@@ -14,6 +14,7 @@ interface Props {
   readonly?: boolean
   color?: Color
   border?: Border
+  autoFocus?: boolean
   onChange?: (value: string) => void
   onEnter?: () => void
 }
@@ -30,6 +31,7 @@ export const TextInput = View<Props>(
     forwardedRef,
     color = 'Primary',
     border = 'Focus',
+    autoFocus = false,
     onEnter,
     ...props
   }) => {
@@ -62,6 +64,7 @@ export const TextInput = View<Props>(
             readOnly={readonly}
             onKeyUp={onKeyDown}
             ref={forwardedRef}
+            autoFocus={autoFocus}
           />
         </Wrapper>
       </Container>
