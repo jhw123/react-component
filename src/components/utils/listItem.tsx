@@ -3,7 +3,7 @@ import React from 'react'
 import { View } from '../../foundation'
 
 interface Props {
-  children: string
+  children: React.ReactNode
 }
 
 export const ListItem = View<Props>(({ children, forwardedRef, ...props }) => {
