@@ -6,7 +6,7 @@ export const Fill = {
     background-color: ${BaseColor.Gray000};
   `,
   Secondary: css`
-    background-color: ${BaseColor.Gray020};
+    background-color: ${BaseColor.Gray010};
   `,
   Success: css`
     background-color: ${BaseColor.Green};
