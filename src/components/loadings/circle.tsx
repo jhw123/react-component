@@ -6,10 +6,15 @@ import { Border } from '../../themes/default/border'
 
 interface Props {
   border?: Border
+  size?: number | string
 }
 
-export const CircleLoading = View<Props>(({ border = 'Secondary', ...props }) => {
-  return <Container {...props} border={border} />
+export const CircleLoading = View<Props>(({ border = 'Secondary', size = '1.5rem', ...props }) => {
+  return (
+    <span {...props}>
+      <Container size={size} border={border} />
+    </span>
+  )
 })
 
 const spinning = keyframes`
@@ -19,10 +24,10 @@ const spinning = keyframes`
   }
 `
 
-const Container = styled.div<{ border: Border }>`
-  ${({ border, theme }) => css`
-    width: 1.5rem;
-    height: 1.5rem;
+const Container = styled.div<{ border: Border; size: number | string }>`
+  ${({ border, size, theme }) => css`
+    width: ${size};
+    height: ${size};
     box-sizing: border-box;
     ${theme.border[border]}
     border-left-color: transparent;
