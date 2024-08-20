@@ -1,6 +1,6 @@
 {
   "name": "@wookiejin/react-component",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "jhw123",
   "license": "MIT",
   "typings": "./dist/cjs/index.d.ts",
