@@ -13,11 +13,14 @@ interface Props {
   minLabel?: string
   maxLabel?: string
   value?: number
+  disabled?: boolean
   onChange?: (value: number) => void
 }
 
+const THUMB_SIZE = 16
+
 export const SliderInput = View<Props>(
-  ({ min, max, minLabel, maxLabel, fill = 'Focus', value = min, onChange, ...props }) => {
+  ({ min, max, minLabel, maxLabel, fill = 'Focus', value = min, onChange, disabled = false, ...props }) => {
     const ticks = useMemo(() => Array.from({ length: max - min + 1 }, (_, i) => i + min), [max, min])
 
     return (
@@ -28,8 +31,10 @@ export const SliderInput = View<Props>(
           fill={fill}
           min={min}
           max={max}
+          outside={value < min || max < value}
           value={value}
           onChange={e => onChange?.(Number(e.target.value))}
+          disabled={disabled}
         />
         <TickContainer>
           {ticks.map(tick => (
@@ -49,21 +54,36 @@ const Container = styled.div`
   position: relative;
 `
 
-const Slider = styled.input<{ fill: Fill }>`
-  ${({ theme, fill }) => css`
+const Slider = styled.input<{ fill: Fill; outside: boolean }>`
+  ${({ theme, fill, outside }) => css`
     width: 100%;
+    height: ${THUMB_SIZE}px;
     appearance: none;
     position: relative;
     cursor: pointer;
 
     ::-webkit-slider-thumb {
       appearance: none;
-      width: 16px;
-      height: 16px;
+      width: ${THUMB_SIZE}px;
+      height: ${THUMB_SIZE}px;
       ${theme.fill[fill]}
       border-radius: 50%;
       cursor: pointer;
     }
+
+    :disabled::-webkit-slider-thumb {
+      filter: contrast(0.6);
+      cursor: not-allowed;
+    }
+
+    ${outside &&
+    css`
+      ::-webkit-slider-thumb {
+        appearance: none;
+        width: 0;
+        height: 0;
+      }
+    `}
   `}
 `
 
