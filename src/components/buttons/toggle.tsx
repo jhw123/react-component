@@ -79,7 +79,7 @@ const Toggle = styled.div<{ isLeft: boolean; fill: Fill }>`
 
 const Label = styled.div<{ active: boolean; color: Fill & Color }>`
   ${({ active, color, theme }) => css`
-    ${active ? 'color: white;' : theme.color[color]}
+    ${active ? theme.color.Contrast : theme.color[color]}
     position: relative;
     transition: color 0.2s ease-in-out;
   `}
