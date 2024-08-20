@@ -20,7 +20,7 @@ interface Props {
 
 export const Sheet = View<Props>(
   ({
-    fill = 'Secondary',
+    fill = 'Primary',
     elevation = 'L0',
     padding,
     paddingBottom,
