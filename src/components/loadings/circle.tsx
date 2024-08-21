@@ -9,7 +9,7 @@ interface Props {
   size?: number | string
 }
 
-export const CircleLoading = View<Props>(({ border = 'Secondary', size = '1.5rem', ...props }) => {
+export const CircleLoading = View<Props>(({ border = 'Secondary', size = '1.5rem', forwardedRef, ...props }) => {
   return (
     <span {...props}>
       <Container size={size} border={border} />
