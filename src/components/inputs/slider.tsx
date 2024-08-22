@@ -71,6 +71,7 @@ const Slider = styled.input<{ fill: Fill; outside: boolean }>`
       cursor: pointer;
     }
 
+    :disabled,
     :disabled::-webkit-slider-thumb {
       filter: contrast(0.6);
       cursor: not-allowed;
