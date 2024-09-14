@@ -34,7 +34,11 @@ export const TabLayout = View<Props>(
             </Tab>
           ))}
         </TabContainer>
-        {React.Children.map(children, (child, i) => selected === i && child)}
+        {React.Children.toArray(children).map((child, i) => (
+          <Content key={i} visible={selected === i}>
+            {child}
+          </Content>
+        ))}
       </Container>
     )
   }
@@ -86,5 +90,14 @@ const Tab = styled.button<{ active: boolean; fill: Fill }>`
         ${theme.fill[fill]};
       }
     `}
+  `}
+`
+
+const Content = styled.div<{ visible: boolean }>`
+  ${({ visible }) => css`
+    display: ${visible ? 'block' : 'none'};
+    width: 100%;
+    height: 100%;
+    overflow: auto;
   `}
 `
