@@ -169,7 +169,7 @@ const Bar = styled.div<{ isOnDrag: boolean; direction: Direction; barWidth: numb
 
     &:hover {
       ${theme.fill.Focus}
-      ${theme.color.Focus}
+      ${theme.color.Secondary}
     }
 
     &::after {

@@ -70,7 +70,7 @@ const Button = styled.div<{ fill: Fill }>`
     border-radius: 8px;
     padding: 8px;
     min-height: ${MIN_BUTTON_SIZE}px;
-    color: white;
+    ${theme.color.Contrast};
     box-sizing: border-box;
     cursor: pointer;
   `}
