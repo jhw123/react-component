@@ -161,7 +161,7 @@ const ChildView = styled.div`
 const Bar = styled.div<{ isOnDrag: boolean; direction: Direction; barWidth: number }>`
   ${({ theme, isOnDrag, direction, barWidth }) => css`
     width: ${direction === 'horizontal' ? barWidth + 'px' : '100%'};
-    height: ${direction === 'horizontal' ? '100%' : barWidth + 'px'};
+    height: ${direction === 'horizontal' ? 'auto' : barWidth + 'px'};
     ${isOnDrag ? theme.fill.Focus : theme.fill.Secondary}
     cursor: ${direction === 'horizontal' ? 'col-resize' : 'row-resize'};
     ${isOnDrag ? theme.color.Focus : theme.color.Secondary}
