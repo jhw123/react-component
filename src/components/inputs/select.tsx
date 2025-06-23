@@ -44,7 +44,7 @@ const Options = styled.select`
     cursor: pointer;
     ${theme.border.Secondary}
     outline: none;
-    width: 100%;
+    width: max-content;
     font-size: inherit;
     text-align: center;
     appearance: none;

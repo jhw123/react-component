@@ -31,7 +31,6 @@ const Container = styled.button<{ color: Color; font: Font }>`
     ${theme.color[color]}
     border-radius: 8px;
     cursor: pointer;
-    padding: 4px 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
