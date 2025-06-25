@@ -7,13 +7,12 @@ import { Color } from '../../themes/default/color'
 
 interface Props {
   fill?: Fill & Color
+  size?: number
 }
 
-export const TextLoading = View<Props>(({ fill = 'Focus', ...props }) => {
-  return <Container {...props} fill={fill} />
+export const TextLoading = View<Props>(({ fill = 'Focus', size = 8, ...props }) => {
+  return <Container {...props} fill={fill} size={size} />
 })
-
-const DOT_SIZE = 8
 
 const dotFlashing = keyframes`
     0% {
@@ -25,19 +24,19 @@ const dotFlashing = keyframes`
     }
 `
 
-const Container = styled.div<{ fill: Fill & Color }>`
-  ${({ theme, fill }) => css`
+const Container = styled.div<{ fill: Fill & Color; size: number }>`
+  ${({ theme, fill, size }) => css`
     position: relative;
-    width: ${DOT_SIZE}px;
-    height: ${DOT_SIZE}px;
+    width: ${size}px;
+    height: ${size}px;
     border-radius: 5px;
     display: inline-block;
     ${theme.fill[fill]}
     ${theme.color[fill]}
     animation: ${dotFlashing} 0.8s infinite linear alternate;
     animation-delay: 0.4s;
-    margin-left: ${DOT_SIZE + 4}px;
-    margin-right: ${DOT_SIZE + 4}px;
+    margin-left: ${size + 4}px;
+    margin-right: ${size + 4}px;
 
     &::before,
     &::after {
@@ -48,8 +47,8 @@ const Container = styled.div<{ fill: Fill & Color }>`
     }
     &::before {
       left: -12px;
-      width: ${DOT_SIZE}px;
-      height: ${DOT_SIZE}px;
+      width: ${size}px;
+      height: ${size}px;
       border-radius: 5px;
       ${theme.fill[fill]}
       ${theme.color[fill]}
@@ -58,8 +57,8 @@ const Container = styled.div<{ fill: Fill & Color }>`
     }
     &::after {
       left: 12px;
-      width: ${DOT_SIZE}px;
-      height: ${DOT_SIZE}px;
+      width: ${size}px;
+      height: ${size}px;
       border-radius: 5px;
       ${theme.fill[fill]}
       ${theme.color[fill]}

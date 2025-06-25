@@ -12,7 +12,7 @@ interface Props {
 export const CircleLoading = View<Props>(({ border = 'Secondary', size = '1.5rem', forwardedRef, ...props }) => {
   return (
     <span {...props}>
-      <Container size={size} border={border} />
+      <Container size={Number.isInteger(size) ? `${size}px` : size} border={border} />
     </span>
   )
 })
