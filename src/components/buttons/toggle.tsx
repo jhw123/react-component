@@ -41,6 +41,7 @@ export const ToggleButton = View<Props>(
 
 const Container = styled.button<{ border: Border }>`
   ${({ border, theme }) => css`
+    ${theme.button}
     ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
     ${theme.border[border]}

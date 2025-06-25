@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import { Border } from './border'
 import { Color } from './color'
 import { Elevation } from './elevation'
@@ -10,4 +11,5 @@ export const DEFAULT_THEME = {
   elevation: Elevation,
   font: Font,
   fill: Fill,
+  button: css``,
 }

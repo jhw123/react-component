@@ -24,9 +24,10 @@ export const FillButton = View<Props>(
 
 const Container = styled.button<{ fill: Fill }>`
   ${({ fill, theme }) => css`
+    ${theme.button}
     ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
-    color: white;
+    ${theme.color.Contrast};
     ${theme.fill[fill]}
     border-radius: 8px;
     cursor: pointer;

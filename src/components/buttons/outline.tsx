@@ -25,6 +25,7 @@ export const OutlineButton = View<Props>(
 
 const Container = styled.button<{ color: Border & Color }>`
   ${({ color, theme }) => css`
+    ${theme.button}
     ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
     border-radius: 8px;

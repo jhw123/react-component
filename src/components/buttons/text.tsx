@@ -26,6 +26,7 @@ export const TextButton = View<Props>(
 
 const Container = styled.button<{ color: Color; font: Font }>`
   ${({ color, font, theme }) => css`
+    ${theme.button}
     ${theme.font[font]}
     min-height: ${MIN_BUTTON_SIZE}px;
     ${theme.color[color]}

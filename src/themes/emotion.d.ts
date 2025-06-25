@@ -1,5 +1,6 @@
 import '@emotion/react'
 import { DEFAULT_THEME } from './default'
+import { SerializedStyles } from '@emotion/react'
 
 declare module '@emotion/react' {
   export interface Theme {
@@ -8,5 +9,6 @@ declare module '@emotion/react' {
     border: typeof DEFAULT_THEME.border
     elevation: typeof DEFAULT_THEME.elevation
     fill: typeof DEFAULT_THEME.fill
+    button: SerializedStyles
   }
 }
