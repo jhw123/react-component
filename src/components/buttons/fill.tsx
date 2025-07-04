@@ -27,7 +27,7 @@ const Container = styled.button<{ fill: Fill }>`
     ${theme.button}
     ${theme.font.Body}
     min-height: ${MIN_BUTTON_SIZE}px;
-    ${theme.color.Contrast};
+    color: white;
     ${theme.fill[fill]}
     border-radius: 8px;
     cursor: pointer;
