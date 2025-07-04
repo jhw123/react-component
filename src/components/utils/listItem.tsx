@@ -18,13 +18,13 @@ export const ListItem = View<Props>(({ children, forwardedRef, bullet = '•', .
 
 const Container = styled.div<{ bullet: string }>`
   ${({ bullet }) => css`
-    margin-left: 1.2ch;
+    margin-left: 2ch;
     position: relative;
 
     &::before {
       content: '${bullet}';
       position: absolute;
-      left: -1.2ch;
+      left: -2ch;
     }
   `}
 `
