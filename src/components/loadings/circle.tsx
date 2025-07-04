@@ -34,15 +34,17 @@ const Container = styled.div<{ border: Border; size: number | string }>`
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-radius: 100%;
+    border-width: calc(${size} / 12);
     position: relative;
     animation: ${spinning} 0.8s ease-in-out infinite;
 
     &:before {
       content: '';
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
+      width: calc(100% + ${size} / 6);
+      height: calc(100% + ${size} / 6);
       box-sizing: border-box;
       ${theme.border[border]}
+      border-width: calc(${size} / 12);
       opacity: 0.3;
       border-radius: 100%;
       display: block;
