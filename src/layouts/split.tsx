@@ -123,7 +123,12 @@ export const SplitLayout = View<Props>(
           const hasBar = i < childrenCnt - 1
           return (
             <>
-              <ChildView style={{ [direction === 'horizontal' ? 'width' : 'height']: sizes[i] }}>{child}</ChildView>
+              <ChildView
+                style={{ [direction === 'horizontal' ? 'width' : 'height']: sizes[i] }}
+                isOnDrag={draggedbarIndex !== -1}
+              >
+                {child}
+              </ChildView>
               {hasBar && (
                 <Bar
                   barWidth={barWidth}
@@ -152,10 +157,13 @@ const Container = styled.div<{ direction: Direction }>`
   `}
 `
 
-const ChildView = styled.div`
-  width: 100%;
-  position: relative;
-  overflow: auto;
+const ChildView = styled.div<{ isOnDrag: boolean }>`
+  ${({ isOnDrag }) => css`
+    width: 100%;
+    position: relative;
+    overflow: auto;
+    user-select: ${isOnDrag ? 'none' : 'auto'};
+  `}
 `
 
 const Bar = styled.div<{ isOnDrag: boolean; direction: Direction; barWidth: number }>`
