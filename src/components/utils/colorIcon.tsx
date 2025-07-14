@@ -41,5 +41,6 @@ const Icon = styled.div<{ size: number; id: string; src: string; fill: Fill }>`
     mask: url(#${id});
     mask-image: url(${src});
     -webkit-mask-box-image: url(${src});
+    mask-size: ${size}px ${size}px;
   `}
 `
