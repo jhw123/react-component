@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const SplitLayout = View<Props>(
-  ({ children, initialSizes, direction = 'horizontal', barWidth = 12, dragThreshold = 5, ...props }) => {
+  ({ children, initialSizes, direction = 'horizontal', barWidth = 8, dragThreshold = 5, ...props }) => {
     const containerRef = React.useRef<HTMLDivElement>(null)
     const childrenCnt = React.Children.count(children)
     const [draggedbarIndex, setDraggedBarIndex] = React.useState(-1)
