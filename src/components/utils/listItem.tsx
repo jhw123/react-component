@@ -17,7 +17,8 @@ export const ListItem = View<Props>(({ children, forwardedRef, bullet = '•', .
 })
 
 const Container = styled.div<{ bullet: string }>`
-  ${({ bullet }) => css`
+  ${({ theme, bullet }) => css`
+    ${theme.font.Body}
     margin-left: 2ch;
     position: relative;
 
