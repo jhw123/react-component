@@ -163,7 +163,7 @@ const ChildView = styled.div<{ isOnDrag: boolean }>`
     position: relative;
     overflow: auto;
     user-select: ${isOnDrag ? 'none' : 'auto'};
-    pointer-events: ${isOnDrag ? 'none' : 'auto'};
+    ${isOnDrag && 'pointer-events: none;'}
   `}
 `
 
