@@ -10,11 +10,12 @@ interface Props {
   options: Readonly<string[]>
   value?: string
   border?: Border
+  placeholder?: string
   onSelect: (index: number, value: string) => void
 }
 
 export const SelectInput = View<Props>(
-  ({ options, border = 'Secondary', onSelect, value, forwardedRef, children, ...props }) => {
+  ({ options, border = 'Secondary', onSelect, value, forwardedRef, children, placeholder, ...props }) => {
     const onClick = useCallback(
       (e: ChangeEvent<HTMLSelectElement>) => {
         const i = options.findIndex(op => op === e.target.value)
@@ -26,9 +27,16 @@ export const SelectInput = View<Props>(
     return (
       <Container {...props} border={border}>
         {children}
-        <Options onChange={onClick} value={value} ref={forwardedRef}>
+        <Options onChange={onClick} ref={forwardedRef}>
+          {placeholder && (
+            <option value="" disabled selected hidden>
+              {placeholder}
+            </option>
+          )}
           {options.map((option, i) => (
-            <option key={i}>{option}</option>
+            <option key={i} selected={value === option}>
+              {option}
+            </option>
           ))}
         </Options>
         <ArrowDown />
@@ -42,7 +50,8 @@ const Container = styled.div<{ border: Border }>`
     ${theme.border[border]}
     border-radius: 8px;
     position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: 4px;
   `}
@@ -54,9 +63,9 @@ const Options = styled.select`
   height: ${MIN_BUTTON_SIZE}px;
   cursor: pointer;
   outline: none;
-  width: max-content;
+  min-width: max-content;
   font-size: inherit;
-  text-align: center;
+  text-align: left;
   appearance: none;
 `
 
