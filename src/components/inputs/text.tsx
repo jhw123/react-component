@@ -109,7 +109,8 @@ const InputBox = styled.textarea`
     top: 8px;
     left: 8px;
     right: 8px;
-    word-break: break-all;
+    word-break: break-word;
+    white-space: pre-line;
 
     ::placeholder {
       ${theme.color.Secondary}
@@ -127,6 +128,6 @@ const HeightResizer = styled.div`
     white-space: pre-line;
     ${theme.font.Body}
     opacity: 0;
-    word-break: break-all;
+    word-break: break-word;
   `}
 `
