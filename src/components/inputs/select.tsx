@@ -29,7 +29,7 @@ export const SelectInput = View<Props>(
         {children}
         <Options onChange={onClick} value={value} ref={forwardedRef}>
           {placeholder && (
-            <option value="" disabled selected hidden>
+            <option value="" disabled hidden>
               {placeholder}
             </option>
           )}
