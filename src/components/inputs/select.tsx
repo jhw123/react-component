@@ -27,16 +27,14 @@ export const SelectInput = View<Props>(
     return (
       <Container {...props} border={border}>
         {children}
-        <Options onChange={onClick} ref={forwardedRef}>
+        <Options onChange={onClick} value={value} ref={forwardedRef}>
           {placeholder && (
             <option value="" disabled selected hidden>
               {placeholder}
             </option>
           )}
           {options.map((option, i) => (
-            <option key={i} selected={value === option}>
-              {option}
-            </option>
+            <option key={i}>{option}</option>
           ))}
         </Options>
         <ArrowDown />
