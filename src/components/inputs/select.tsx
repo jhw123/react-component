@@ -61,7 +61,7 @@ const Options = styled.select`
   height: ${MIN_BUTTON_SIZE}px;
   cursor: pointer;
   outline: none;
-  min-width: max-content;
+  width: 100%;
   font-size: inherit;
   text-align: left;
   appearance: none;
