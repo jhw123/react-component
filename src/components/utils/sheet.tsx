@@ -20,6 +20,7 @@ interface Props {
 
 export const Sheet = View<Props>(
   ({
+    forwardedRef,
     fill = 'Primary',
     elevation = 'L0',
     padding,
@@ -41,7 +42,7 @@ export const Sheet = View<Props>(
     })
 
     return (
-      <Container {...props} fill={fill} elevation={elevation} style={styleWithPadding}>
+      <Container {...props} fill={fill} elevation={elevation} style={styleWithPadding} ref={forwardedRef}>
         {children}
       </Container>
     )
