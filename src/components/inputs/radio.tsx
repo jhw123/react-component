@@ -33,8 +33,8 @@ export const RadioInput = View<Props>(
 
 const Container = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: start;
   cursor: pointer;
   user-select: none;
@@ -64,6 +64,7 @@ const Label = styled.label`
     cursor: pointer;
     ${theme.font.Body}
     margin-top: 3px;
+    width: 100%;
   `}
 `
 
