@@ -7,33 +7,32 @@ import { View } from '../foundation'
 interface Props {
   checked?: boolean
   children: React.ReactNode
+  transitionDuration?: number
 }
 
-const TRANSITION_DURATION = 500
-
-export const CollapsibleLayout = View<Props>(({ children, checked = true, ...props }) => {
+export const CollapsibleLayout = View<Props>(({ children, checked = true, transitionDuration = 500, ...props }) => {
   const [transitionOn, setTransitionOn] = useState(false)
 
   useEffectOnce(() => {
     setTimeout(() => {
       setTransitionOn(true)
-    }, TRANSITION_DURATION + 1)
+    }, transitionDuration + 1)
   })
 
   return (
-    <Container {...props} collapsed={!checked} transitionOn={transitionOn}>
+    <Container {...props} collapsed={!checked} transitionOn={transitionOn} transitionDuration={transitionDuration}>
       {children}
     </Container>
   )
 })
 
-const Container = styled.div<{ collapsed: boolean; transitionOn: boolean }>`
-  ${({ collapsed, transitionOn }) => css`
+const Container = styled.div<{ collapsed: boolean; transitionOn: boolean; transitionDuration: number }>`
+  ${({ collapsed, transitionOn, transitionDuration }) => css`
     max-height: ${collapsed ? 0 : '2000px'};
     overflow: hidden;
     ${transitionOn &&
     css`
-      transition: max-height ${TRANSITION_DURATION}ms ease-in-out;
+      transition: max-height ${transitionDuration}ms ease-in-out;
     `}
   `}
 `
