@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
+import React, { ChangeEvent, KeyboardEvent, useCallback, useId } from 'react'
 import { View } from '../../foundation'
 import { Border } from '../../themes/default/border'
 import { Color } from '../../themes/default/color'
@@ -37,6 +37,8 @@ export const TextInput = View<Props>(
     children,
     ...props
   }) => {
+    const id = useId()
+
     const onWrite = useCallback(
       (e: ChangeEvent<HTMLTextAreaElement>) => {
         onChange?.(e.target.value)
@@ -57,7 +59,7 @@ export const TextInput = View<Props>(
     return (
       <Container {...props} color={color} border={border}>
         {children}
-        <InputArea maxRows={maxRows} minRows={minRows}>
+        <InputArea maxRows={maxRows} minRows={minRows} hasTop={children !== undefined}>
           <HeightResizer>{value + '\n'}</HeightResizer>
           <InputBox
             onChange={onWrite}
@@ -68,6 +70,8 @@ export const TextInput = View<Props>(
             onKeyUp={onKeyDown}
             ref={forwardedRef}
             autoFocus={autoFocus}
+            name={id}
+            hasTop={children !== undefined}
           />
         </InputArea>
       </Container>
@@ -77,7 +81,6 @@ export const TextInput = View<Props>(
 
 const Container = styled.div<{ color: Color; border: Border }>`
   ${({ theme, color, border }) => css`
-    width: calc(100% - 18px);
     border-radius: 8px;
     ${theme.border.Secondary}
     ${theme.color[color]}
@@ -88,13 +91,17 @@ const Container = styled.div<{ color: Color; border: Border }>`
   `}
 `
 
-const InputArea = styled.div<{ maxRows: number; minRows: number }>`
-  ${({ maxRows, minRows }) => css`
+const InputArea = styled.div<{ maxRows: number; minRows: number; hasTop: boolean }>`
+  ${({ maxRows, minRows, hasTop }) => css`
     position: relative;
     height: fit-content;
     box-sizing: content-box;
     overflow: auto;
     padding: 8px;
+    ${hasTop &&
+    css`
+      padding-top: 0;
+    `}
 
     ${0 < maxRows &&
     css`
@@ -107,17 +114,17 @@ const InputArea = styled.div<{ maxRows: number; minRows: number }>`
   `}
 `
 
-const InputBox = styled.textarea`
-  ${({ theme }) => css`
+const InputBox = styled.textarea<{ hasTop: boolean }>`
+  ${({ theme, hasTop }) => css`
     box-sizing: border-box;
     font-family: inherit;
     ${theme.font.Body}
     outline: none;
     position: absolute;
-    height: calc(100% - 16px);
+    height: calc(100% - ${hasTop ? 8 : 16}px);
     resize: none;
     overflow: hidden;
-    top: 8px;
+    top: ${hasTop ? 0 : 8}px;
     left: 8px;
     right: 8px;
     word-break: break-word;
