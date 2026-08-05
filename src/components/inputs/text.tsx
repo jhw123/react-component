@@ -15,6 +15,7 @@ interface Props {
   color?: Color
   border?: Border
   autoFocus?: boolean
+  children?: React.ReactNode
   onChange?: (value: string) => void
   onEnter?: () => void
 }
@@ -33,6 +34,7 @@ export const TextInput = View<Props>(
     border = 'Focus',
     autoFocus = false,
     onEnter,
+    children,
     ...props
   }) => {
     const onWrite = useCallback(
@@ -54,6 +56,7 @@ export const TextInput = View<Props>(
 
     return (
       <Container {...props} color={color} maxRows={maxRows} minRows={minRows} border={border}>
+        {children}
         <HeightResizer>{value + '\n'}</HeightResizer>
         <InputBox
           onChange={onWrite}
