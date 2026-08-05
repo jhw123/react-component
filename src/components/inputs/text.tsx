@@ -2,8 +2,8 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { ChangeEvent, KeyboardEvent, useCallback } from 'react'
 import { View } from '../../foundation'
-import { Color } from '../../themes/default/color'
 import { Border } from '../../themes/default/border'
+import { Color } from '../../themes/default/color'
 
 interface Props {
   value: string
@@ -55,34 +55,47 @@ export const TextInput = View<Props>(
     )
 
     return (
-      <Container {...props} color={color} maxRows={maxRows} minRows={minRows} border={border}>
+      <Container {...props} color={color} border={border}>
         {children}
-        <HeightResizer>{value + '\n'}</HeightResizer>
-        <InputBox
-          onChange={onWrite}
-          value={value}
-          disabled={disabled}
-          placeholder={placeholder}
-          readOnly={readonly}
-          onKeyUp={onKeyDown}
-          ref={forwardedRef}
-          autoFocus={autoFocus}
-        />
+        <InputArea maxRows={maxRows} minRows={minRows}>
+          <HeightResizer>{value + '\n'}</HeightResizer>
+          <InputBox
+            onChange={onWrite}
+            value={value}
+            disabled={disabled}
+            placeholder={placeholder}
+            readOnly={readonly}
+            onKeyUp={onKeyDown}
+            ref={forwardedRef}
+            autoFocus={autoFocus}
+          />
+        </InputArea>
       </Container>
     )
   }
 )
 
-const Container = styled.div<{ maxRows: number; minRows: number; color: Color; border: Border }>`
-  ${({ theme, maxRows, minRows, color, border }) => css`
+const Container = styled.div<{ color: Color; border: Border }>`
+  ${({ theme, color, border }) => css`
     width: calc(100% - 18px);
     border-radius: 8px;
     ${theme.border.Secondary}
     ${theme.color[color]}
-    padding: 8px;
+
+    &:focus-within {
+      ${theme.border[border]}
+    }
+  `}
+`
+
+const InputArea = styled.div<{ maxRows: number; minRows: number }>`
+  ${({ maxRows, minRows }) => css`
+    position: relative;
     height: fit-content;
     box-sizing: content-box;
-    position: relative;
+    overflow: auto;
+    padding: 8px;
+
     ${0 < maxRows &&
     css`
       max-height: ${maxRows * 1.4}rem;
@@ -91,11 +104,6 @@ const Container = styled.div<{ maxRows: number; minRows: number; color: Color; b
     css`
       min-height: ${minRows * 1.4}rem;
     `}
-    overflow: auto;
-
-    &:focus-within {
-      ${theme.border[border]}
-    }
   `}
 `
 
